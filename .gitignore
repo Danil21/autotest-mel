@@ -5,5 +5,5 @@
 .test-output/
 .test-result/
 *.txt
-.target/
-.build/
+selenide-tests-example.iml
+*.png
