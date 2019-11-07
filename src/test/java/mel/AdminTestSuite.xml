@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="AllTests" verbose="10">
+    <test name="AdminTest" >
+        <classes>
+            <class name="mel.Tests.Admin.AddingUserTest"/>
+            <class name="mel.Tests.Admin.LoginTest"/>
+            <class name="mel.Tests.Admin.RubricatorTest"/>
+            <class name="mel.Tests.Admin.BrandingTest"/>
+            <class name="mel.Tests.Admin.TagsTest"/>
+            <class name="mel.Tests.Admin.BlogsTest"/>
+            <class name="mel.Tests.Admin.AddingPublicationTest"/>
+            <class name="mel.Tests.Admin.AddingContentBlocksTest"/>
+            <class name="mel.Tests.Admin.AddingAuthorTest"/>
+            <class name="mel.Tests.Admin.SearchTest"/>
+            <class name="mel.Tests.Admin.DraftTest"/>
+            <class name="mel.Tests.Admin.LockEdititngPublicationTest"/>
+        </classes>
+    </test>
+</suite>

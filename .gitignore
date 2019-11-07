@@ -1,0 +1,9 @@
+# Ignore objects and archives.
+.idea/
+.build/
+.target/
+.test-output/
+.test-result/
+*.txt
+.target/
+.build/
