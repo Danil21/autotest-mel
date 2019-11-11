@@ -5,19 +5,13 @@ import mel.Helper.AdditionalMethods;
 import mel.Helper.GetUrl;
 import mel.Helper.SetDriver;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Keyboard;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.title;
 
 public class CheckErrorPageTest extends SetDriver {
-
-    private AdditionalMethods methods;
-    private GetUrl getUrl;
 
     private By errorMessage = By.cssSelector(".l-page-404__text-description");
     private By errorImage = By.cssSelector(".i-layout__content > div > img");
@@ -27,8 +21,8 @@ public class CheckErrorPageTest extends SetDriver {
     @Test
     public void checkErrorPage() {
 
-            methods = new AdditionalMethods();
-            getUrl = new GetUrl();
+        AdditionalMethods methods = new AdditionalMethods();
+        GetUrl getUrl = new GetUrl();
 
             getUrl.driverGet();
             getUrl.driverGetCurrentUrl("somewrongpagetest");

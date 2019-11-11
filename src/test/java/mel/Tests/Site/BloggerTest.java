@@ -13,11 +13,8 @@ import mel.TestClasses.Login;
 import mel.TestClasses.Logout;
 import mel.TestClasses.Registration;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -25,11 +22,9 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class BloggerTest extends SetDriver {
 
-    private Registration registration = new Registration();
     private AdditionalMethods methods;
     private Blogs blogger = new Blogs();
     private GetUrl getUrl;
-    private AdminLogin adminLogin;
     private String bloggerUrl;
     private String bloggerEmail;
 
@@ -54,8 +49,8 @@ public class BloggerTest extends SetDriver {
     public void sendMessageInBlog() {
         methods = new AdditionalMethods();
         getUrl = new GetUrl();
-        registration = new Registration();
-        adminLogin = new AdminLogin();
+        Registration registration = new Registration();
+        AdminLogin adminLogin = new AdminLogin();
         AdminBlogs blogs = new AdminBlogs();
         Logout logout = new Logout();
 

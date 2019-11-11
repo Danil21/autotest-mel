@@ -17,7 +17,6 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class ProfileTest extends SetDriver {
 
-    private Login autoLogin;
     private Registration registration;
     private AdditionalMethods methods;
     private Profile profile;
@@ -31,7 +30,7 @@ public class ProfileTest extends SetDriver {
         profile = new Profile();
         registration = new Registration();
         openDropdown = new Logout();
-        autoLogin = new Login();
+        Login autoLogin = new Login();
 
         getUrl.driverGet();
         registration.userRegistrationWithLoginButton("testname", "testlastname", methods.generateStr(), "12345678");

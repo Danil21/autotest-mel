@@ -26,7 +26,6 @@ public class PopularTags extends SetDriver {
     public By authorPageTitle = By.xpath("//*[@class='b-pb-author__name']");
 
     private GetUrl getUrl = new GetUrl();
-    private String popularUrl = "/tags/popular/1";
 
     public void searchTagWithEnter() {
         $(searchInput).click();
@@ -45,6 +44,7 @@ public class PopularTags extends SetDriver {
 
     public void checkPagination() {
         getUrl.driverGet();
+        String popularUrl = "/tags/popular/1";
         getUrl.driverGetCurrentUrl(popularUrl);
         $(secondPageButton).scrollTo().click();
         Assert.assertTrue(url().contains("2"));

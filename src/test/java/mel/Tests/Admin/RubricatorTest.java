@@ -1,5 +1,6 @@
 package mel.Tests.Admin;
 
+import MelAppium.resources.config;
 import com.codeborne.selenide.Condition;
 import mel.AdminTestClasses.AdminLogin;
 import mel.AdminTestClasses.AdminRubricator;
@@ -9,26 +10,22 @@ import mel.Helper.SetDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class RubricatorTest extends SetDriver {
 
-    private AdditionalMethods methods;
-    private AdminLogin adminLogin;
-    private GetUrl getUrl;
-    private AdminRubricator rubricator;
-
 
     @Test
     public void rubricator() {
-        methods = new AdditionalMethods();
-        rubricator = new AdminRubricator();
-        getUrl = new GetUrl();
-        adminLogin = new AdminLogin();
+        AdditionalMethods methods = new AdditionalMethods();
+        AdminRubricator rubricator = new AdminRubricator();
+        GetUrl getUrl = new GetUrl();
+        AdminLogin adminLogin = new AdminLogin();
 
         getUrl.driverGetAdminUrl();
-        adminLogin.adminAuthorisation("test@example.com", "123qwe11");
+        adminLogin.adminAuthorisation(config.getTestProperty("adminLogin"),config.getTestProperty("adminPass"));
         $(rubricator.rubricatorTab).click();
 
         //add new rubric

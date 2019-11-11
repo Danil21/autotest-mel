@@ -26,7 +26,7 @@ import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 
 public abstract class SetDriver extends AdditionalMethodsMobile {
 
-    public static WebDriver driver;
+    private static WebDriver driver;
     public static WebDriverWait wait;
 
     @BeforeClass

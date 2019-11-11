@@ -27,8 +27,7 @@ public class DownloadArticles extends SetDriver {
         final int max = 85;
         final int randomArticleNumber = rnd(min, max);
 
-        By article = By.cssSelector("div.b-pb-frontpage__grid > div:nth-child(" + randomArticleNumber + ")");
-        return article;
+        return By.cssSelector("div.b-pb-frontpage__grid > div:nth-child(" + randomArticleNumber + ")");
     }
 
     private By getRandomArticleInRubric() {
@@ -36,8 +35,7 @@ public class DownloadArticles extends SetDriver {
         final int max = 95;
         final int randomArticleNumber = rnd(min, max);
 
-        By articleInRubric = By.xpath("//div[" + randomArticleNumber + "][contains(@class,'b-pb-frontpage__card')]");
-        return articleInRubric;
+        return By.xpath("//div[" + randomArticleNumber + "][contains(@class,'b-pb-frontpage__card')]");
     }
 
     private By getRandomArticleInPublication() {
@@ -45,8 +43,7 @@ public class DownloadArticles extends SetDriver {
         final int max = 18;
         final int randomArticleNumber = rnd(min, max);
 
-        By articleInPublication = By.xpath("//div[" + randomArticleNumber + "][contains(@class,'b-pb-frontpage__card_scope_desktop')]");
-        return articleInPublication;
+        return By.xpath("//div[" + randomArticleNumber + "][contains(@class,'b-pb-frontpage__card_scope_desktop')]");
     }
 
     public void pressInArticleMore() {

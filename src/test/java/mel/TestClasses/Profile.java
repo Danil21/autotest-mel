@@ -70,13 +70,11 @@ public class Profile extends SetDriver {
 
 
     public String getFirstname() {
-        String str = $(firstnameInput).getAttribute("value");
-        return str;
+        return $(firstnameInput).getAttribute("value");
     }
 
     public String getLastname() {
-        String str = $(lastnameInput).getAttribute("value");
-        return str;
+        return $(lastnameInput).getAttribute("value");
     }
 
     public void clickOnSaveButton() {
@@ -84,18 +82,15 @@ public class Profile extends SetDriver {
     }
 
     public String getEmail() {
-        String str = $(emailInput).getAttribute("value");
-        return str;
+        return $(emailInput).getAttribute("value");
     }
 
     public String getPhone() {
-        String str = $(phoneInput).getAttribute("value");
-        return str;
+        return $(phoneInput).getAttribute("value");
     }
 
     public String getBirthdate() {
-        String str = $(birthdateInput).getAttribute("value");
-        return str;
+        return $(birthdateInput).getAttribute("value");
     }
 
     public void clickOnCloseButton() {

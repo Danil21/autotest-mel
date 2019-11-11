@@ -11,7 +11,6 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class SocialNetworksAuthorisation extends SetDriver{
-    private AdditionalMethods methods;
     private SharingArticle article;
 
     // Button Enter on main
@@ -33,7 +32,7 @@ public class SocialNetworksAuthorisation extends SetDriver{
 
     private void authorisation(By loginButton, By socialNetworkButton, By emailInput, By passwordInput,
                               String email, String password, By enterButton){
-        methods = new AdditionalMethods();
+        AdditionalMethods methods = new AdditionalMethods();
 
         $(loginButton).click();
 
@@ -75,7 +74,6 @@ public class SocialNetworksAuthorisation extends SetDriver{
     }
 
     public String checkAvatar(){
-        String str = $(userAvatar).getTagName();
-        return str;
+        return $(userAvatar).getTagName();
     }
 }

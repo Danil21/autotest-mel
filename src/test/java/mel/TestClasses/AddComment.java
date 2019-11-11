@@ -10,7 +10,7 @@ import org.testng.Assert;
 import static com.codeborne.selenide.Selenide.*;
 
 public class AddComment extends SetDriver {
-    //TODO есть повторяющиеся локаторы так как на странице публикаци другие локаторы
+    // есть повторяющиеся локаторы так как на странице публикаци другие локаторы
     private By article = By.cssSelector(".b-pb-cover__title");
     private By fieldForComment = By.xpath("//*[@class='g-textarea__textarea']");
     private By commentPublicButton = By.xpath("//*[contains(text(),'тправить')]");
@@ -29,7 +29,7 @@ public class AddComment extends SetDriver {
     private By textInAnswerComment = By.xpath("//div[contains(text(),'test-answer')]");
     public By commentHeader = By.xpath("//div[contains(@class,'comments-header')]");
     private By buttonToСomments = By.xpath("//*[text()='К комментариям']");
-    //*[contains(@class,'article__comments-link-count')]
+
     public By textInEmail = By.xpath("//*[contains(text(),'Такой \"кудрявый\" текст читать просто невозможно')]");
 
     public void insertAndAddComment(String comment, String answerComment) {
@@ -64,8 +64,7 @@ public class AddComment extends SetDriver {
     }
 
     public int countComments() {
-        int elementsNumber = $$(commentClass).size();
-        return elementsNumber;
+        return $$(commentClass).size();
     }
 
     public void checkShowAllComments() {

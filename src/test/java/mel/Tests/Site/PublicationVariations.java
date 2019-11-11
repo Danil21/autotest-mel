@@ -5,11 +5,7 @@ import mel.Helper.AdditionalMethods;
 import mel.Helper.GetUrl;
 import mel.Helper.SetDriver;
 import mel.TestClasses.Search;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 import static com.codeborne.selenide.Selenide.$;
 

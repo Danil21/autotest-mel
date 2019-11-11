@@ -7,13 +7,14 @@ import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class AdminAddingAuthor extends SetDriver {
 
-    private AdditionalMethods methods;
+    private AdditionalMethods methods = new AdditionalMethods();
 
     private By authorsTabButton = By.xpath("//*[@class='g-list__item ' and text()='Авторы']");
-    private By newAuthorButton = By.cssSelector(".i-layout__subheader > div");
+    private By newAuthorButton = By.cssSelector(".i-layout__new-author-button"); //*[text()='+ Новый автор']
     private By downloadPhotoButton = By.cssSelector(".i-layout__photo-upload > div");
     private By downloadCoverButton = By.cssSelector(".i-layout__cover-upload > div");
     private By nameField = By.cssSelector(".i-layout__first-name-input > div > input");
@@ -28,8 +29,7 @@ public class AdminAddingAuthor extends SetDriver {
     private By openInNewPageButton = By.cssSelector(".b-table-row__controls");
     private By dropdownButton = By.cssSelector(".g-dropdown__opener");
     private By editButtonInDropdown = By.cssSelector(".g-dropdown__content > div > div:nth-child(1)");
-    private By deleteButtonInDropdown = By.xpath("//div[contains(@class,'g-dropdown_focused')]/descendant::div[text()='Удалить']");
-    private By confirmDeleteButton = By.xpath("//div[contains(@class,'g-button_solid-theme') and text()='Удалить']");
+    private By deleteButtonInDropdown = By.cssSelector("#\\33 84 > div.b-table-row__controls > div > div > div.g-dropdown__content > div > div:nth-child(2)");
     private By confirmDeleteAuthorButton = By.cssSelector(".i-layout__remove-button");
     public By authorNameAndSurname = By.cssSelector(".b-table-row__name");
     public By authorNameAndSurnameInSite = By.cssSelector(".b-pb-author__name");
@@ -38,7 +38,6 @@ public class AdminAddingAuthor extends SetDriver {
     private By sortingSubscribersButton = By.cssSelector(".b-table__sort-by-subscriptions-button");
     public By deleteUserWithPublicationMessage = By.cssSelector(".i-layout__cant-remove-message");
     private By closeButtonInDeleteUserWindow = By.cssSelector(".i-layout__close-button > div");
-    private By passwordsDontMatchMessage = By.cssSelector(".i-layout__same-password-input > div > div");
 
     public By firstPublicationCount = By.cssSelector("#\\32 8 > div.b-table-row__publications-count");
     public By secondPublicationcount = By.cssSelector("#\\32 37 > div.b-table-row__publications-count");
@@ -47,25 +46,23 @@ public class AdminAddingAuthor extends SetDriver {
     public By secondSubscribersCount = By.cssSelector("#\\36 7 > div.b-table-row__subscriptions-count");
 
     private By deleteCoverButton = By.cssSelector(".i-layout__remove-photo-button.i-layout__photo-remove");
-    private By createdAuthorEditButton = By.xpath("//a[contains(@href,'firstname')]/following-sibling::div");
 
     public void checkAddingAuthorWithIncorrectFields() {
-        methods = new AdditionalMethods();
         $(authorsTabButton).click();
+        sleep(2000);
         $(newAuthorButton).click();
+        sleep(500);
         $(downloadPhotoButton).click();
-        methods.Wait(500);
+        sleep(500);
         methods.imageDownload("C:\\1.jpg");
-        methods.Wait(2000);
+        sleep(1000);
     }
 
     public void addingNewAuthor(String name, String surname, String email, String aboutAuthor) throws InterruptedException {
-        methods = new AdditionalMethods();
-
         $(downloadCoverButton).click();
-        methods.Wait(500);
+        sleep(200);
         methods.imageDownload("C:\\1.jpg");
-        methods.Wait(500);
+        sleep(200);
         $(nameField).sendKeys(name);
         $(surnameField).sendKeys(surname);
         $(emailField).sendKeys(email);
@@ -73,9 +70,9 @@ public class AdminAddingAuthor extends SetDriver {
 
         if (getDisplayedCover() == false) {
             $(downloadPhotoButton).click();
-            methods.Wait(500);
+            sleep(200);
             methods.imageDownload("C:\\1.jpg");
-            methods.Wait(500);
+            sleep(200);
         }
 
         $(saveAuthorButton).click();
@@ -93,25 +90,19 @@ public class AdminAddingAuthor extends SetDriver {
         $(dropdownButton).click();
     }
 
-    public void clickOnAuthorTab() {
-        $(authorsTabButton).click();
-    }
-
     public void editAuthor(String name, String surname) {
-        methods = new AdditionalMethods();
-
         clickIndropdownButton();
         $(editButtonInDropdown).click();
-        methods.Wait(100);
+        sleep(200);
         $(nameField).clear();
-        methods.Wait(100);
+        sleep(200);
         $(nameField).sendKeys(name);
-        methods.Wait(100);
+        sleep(200);
         $(surnameField).clear();
-        methods.Wait(100);
+        sleep(200);
         $(surnameField).sendKeys(surname);
         $(saveAuthorButton).click();
-        methods.Wait(100);
+        sleep(200);
     }
 
     public void clickInsortingPublicationButton() {
@@ -124,8 +115,7 @@ public class AdminAddingAuthor extends SetDriver {
 
     public int convertSelectorToNumber(By selector) {
         String str = $(selector).getText();
-        int number = Integer.parseInt(str.replace(" ", ""), 10);
-        return number;
+        return Integer.parseInt(str.replace(" ", ""), 10);
     }
 
     // сравнение чисел для сортировки
@@ -140,10 +130,8 @@ public class AdminAddingAuthor extends SetDriver {
     }
 
     public void clickInDeleteButtons() {
-        methods = new AdditionalMethods();
-
         $(deleteButtonInDropdown).click();
-        methods.Wait(1000);
+        sleep(500);
         $(confirmDeleteAuthorButton).click();
     }
 
@@ -162,10 +150,6 @@ public class AdminAddingAuthor extends SetDriver {
 
     public void clickInDeleteUserButton() {
         $(deleteButtonInDropdown).click();
-    }
-
-    public void clickOnConfirmDeleteButton() {
-        $(confirmDeleteButton).click();
     }
 
     public void clickInCloseButtonInDeleteUserWindow() {

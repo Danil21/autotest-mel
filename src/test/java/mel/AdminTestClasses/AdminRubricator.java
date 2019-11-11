@@ -40,13 +40,11 @@ public class AdminRubricator extends SetDriver {
     public By cancelDisplay = By.xpath("//button[text()='Отмена']");
 
     public String metaNameSeoTitleRubric() {
-        String str = $(metaNameSeoTitle).getAttribute("content");
-        return str;
+        return $(metaNameSeoTitle).getAttribute("content");
     }
 
     public String metaNameSeoDescriptionRubric() {
-        String str = $(metaNameDescriptionTitle).getAttribute("content");
-        return str;
+        return $(metaNameDescriptionTitle).getAttribute("content");
     }
 
     public void addNewRubric(String TitleRubric) {

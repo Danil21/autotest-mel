@@ -1,5 +1,6 @@
 package mel.Tests.Admin;
 
+import MelAppium.resources.config;
 import mel.AdminTestClasses.AdminBlogs;
 import mel.AdminTestClasses.AdminFrontPage;
 import mel.AdminTestClasses.AdminLogin;
@@ -24,10 +25,6 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public class BlogsTest extends SetDriver {
 
     private AdditionalMethods methods;
-    private AdminLogin adminLogin;
-    private GetUrl getUrl;
-    private AdminFrontPage frontPage;
-    private AdminBlogs blogs;
 
 
     @AfterClass
@@ -46,13 +43,13 @@ public class BlogsTest extends SetDriver {
     @Test
     public void checkBlogs() {
         methods = new AdditionalMethods();
-        getUrl = new GetUrl();
-        adminLogin = new AdminLogin();
-        frontPage = new AdminFrontPage();
-        blogs = new AdminBlogs();
+        GetUrl getUrl = new GetUrl();
+        AdminLogin adminLogin = new AdminLogin();
+        AdminFrontPage frontPage = new AdminFrontPage();
+        AdminBlogs blogs = new AdminBlogs();
 
         getUrl.driverGetAdminUrl();
-        adminLogin.adminAuthorisation("test@example.com", "123qwe11");
+        adminLogin.adminAuthorisation(config.getTestProperty("adminLogin"),config.getTestProperty("adminPass"));
         blogs.clickInBlogsButton();
 
         String parentWindowId = getWebDriver().getWindowHandle();

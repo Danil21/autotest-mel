@@ -80,7 +80,6 @@ public class AdminBlogs extends SetDriver{
     }
 
     public String getBlogId(){
-        String str = $(blogId).getAttribute("data-params").substring(6,10);
-        return str;
+        return $(blogId).getAttribute("data-params").substring(6,10);
     }
 }

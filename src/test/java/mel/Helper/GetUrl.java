@@ -13,8 +13,7 @@ public class GetUrl extends SetDriver {
         int stand = settings.setStandNumber();
 
         if (stand == 2) {
-            String str = String.valueOf(stand);
-            return str;
+            return String.valueOf(stand);
         }
         return "";
     }
@@ -29,8 +28,7 @@ public class GetUrl extends SetDriver {
     }
 
     public String driverGetStr() {
-        String str = "https://qa" + choiceStand() + ".mel.fm/";
-        return str;
+        return "https://qa" + choiceStand() + ".mel.fm/";
     }
 
     public void driverGetAdminUrl() {
@@ -38,8 +36,7 @@ public class GetUrl extends SetDriver {
     }
 
     public String driverGetAdminUrlStr() {
-        String str = "https://admin-qa" + choiceStand() + ".mel.fm/";
-        return str;
+        return "https://admin-qa" + choiceStand() + ".mel.fm/";
     }
 
     public void driverGetCurrentAdminUrl(String str) {

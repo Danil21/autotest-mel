@@ -20,13 +20,13 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class DraftTest extends SetDriver {
 
-    AdditionalMethods methods = new AdditionalMethods();
-    GetUrl getUrl = new GetUrl();
-    AdminPublicationDraft draft = new AdminPublicationDraft();
-    AdminAddingPublication addingPublication = new AdminAddingPublication();
-    AdminBlogs blogs = new AdminBlogs();
-    AdminLogin adminLogin = new AdminLogin();
-    AdminLogout adminLogout = new AdminLogout();
+    private AdditionalMethods methods;
+    private  GetUrl getUrl;
+    private AdminPublicationDraft draft;
+    private AdminAddingPublication addingPublication;
+    private AdminBlogs blogs;
+    private  AdminLogin adminLogin;
+    private  AdminLogout adminLogout;
 
     @Test
     public void checkDraft() throws IOException, UnsupportedFlavorException {
@@ -35,6 +35,8 @@ public class DraftTest extends SetDriver {
         draft = new AdminPublicationDraft();
         methods = new AdditionalMethods();
         adminLogout = new AdminLogout();
+        addingPublication = new AdminAddingPublication();
+        blogs = new AdminBlogs();
 
         getUrl.driverGetAdminUrl();
         adminLogin.adminAuthorisation(config.getTestProperty("adminLogin"), config.getTestProperty("adminPass"));

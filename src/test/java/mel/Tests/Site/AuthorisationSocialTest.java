@@ -6,11 +6,7 @@ import mel.Helper.SetDriver;
 import mel.TestClasses.Logout;
 import mel.TestClasses.SocialNetworksAuthorisation;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class AuthorisationSocialTest extends SetDriver {
 

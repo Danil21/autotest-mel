@@ -1,39 +1,34 @@
 package mel.Tests.Admin;
 
+import MelAppium.resources.config;
 import mel.AdminTestClasses.AdminLogin;
 import mel.Helper.AdditionalMethods;
 import mel.Helper.GetUrl;
 import mel.Helper.SetDriver;
 import mel.TestClasses.AuthorBloggerSubscribe;
 import mel.TestClasses.Registration;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.Set;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class TagsTest extends SetDriver {
 
-    private AdditionalMethods methods;
-    private AdminLogin adminLogin;
-    private GetUrl getUrl;
-    private AuthorBloggerSubscribe.AdminTags tags;
-    private Registration registration;
-
 
     @Test
     public void tags() {
-        methods = new AdditionalMethods();
-        tags = new AuthorBloggerSubscribe.AdminTags();
-        getUrl = new GetUrl();
-        adminLogin = new AdminLogin();
-        registration = new Registration();
+        AdditionalMethods methods = new AdditionalMethods();
+        AuthorBloggerSubscribe.AdminTags tags = new AuthorBloggerSubscribe.AdminTags();
+        GetUrl getUrl = new GetUrl();
+        AdminLogin adminLogin = new AdminLogin();
+        Registration registration = new Registration();
 
         getUrl.driverGetAdminUrl();
-        adminLogin.adminAuthorisation("test@example.com", "123qwe11");
+        adminLogin.adminAuthorisation(config.getTestProperty("adminLogin"),config.getTestProperty("adminPass"));
         int a = 0;
         int b = 10000;
         int FirstRandomNumber = a + (int) (Math.random() * b);

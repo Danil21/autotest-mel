@@ -14,21 +14,12 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class AddingContentBlocksTest extends SetDriver {
 
-    private  AdminAddingTestContent addingTest;
-    private  GetUrl getUrl;
-    private AdminLogin adminLogin;
-    private AdminAddingPublication addingPublication ;
-    private AdminPublicationDraft draft ;
-    private AdditionalMethods methods;
-
     @Test
     public void addingContentBlocks() {
-        addingTest = new AdminAddingTestContent();
-        getUrl = new GetUrl();
-        adminLogin = new AdminLogin();
-        addingPublication = new AdminAddingPublication();
-        draft = new AdminPublicationDraft();
-        methods = new AdditionalMethods();
+        AdminAddingTestContent addingTest = new AdminAddingTestContent();
+        GetUrl getUrl = new GetUrl();
+        AdminLogin adminLogin = new AdminLogin();
+        AdminAddingPublication addingPublication = new AdminAddingPublication();
 
         int a = 0;
         int b = 10000;

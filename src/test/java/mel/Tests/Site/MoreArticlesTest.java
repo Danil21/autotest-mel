@@ -18,8 +18,6 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 public class MoreArticlesTest extends SetDriver {
 
     private AdditionalMethods methods;
-    private DownloadArticles article;
-    private GetUrl getUrl;
 
     @AfterClass
     public void browserLogs() throws IOException {
@@ -36,9 +34,9 @@ public class MoreArticlesTest extends SetDriver {
 
     @Test
     public void moreArticleMane() {
-        article = new DownloadArticles();
+        DownloadArticles article = new DownloadArticles();
         methods = new AdditionalMethods();
-        getUrl = new GetUrl();
+        GetUrl getUrl = new GetUrl();
 
         getUrl.driverGet();
         //methods.closeNotificationCookie();

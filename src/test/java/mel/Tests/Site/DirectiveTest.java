@@ -6,19 +6,11 @@ import mel.Helper.GetUrl;
 import mel.Helper.SetDriver;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class DirectiveTest extends SetDriver{
-
-    private AdditionalMethods methods;
-    private GetUrl getUrl;
-    private AdminLogin adminLogin;
 
     private By siteMapText = By.cssSelector(".html-attribute-value");
     private By robotTxtText = By.cssSelector("pre");
@@ -36,9 +28,9 @@ public class DirectiveTest extends SetDriver{
 
     @Test
     public void directiveTest() {
-        methods = new AdditionalMethods();
-        getUrl = new GetUrl();
-        adminLogin = new AdminLogin();
+        AdditionalMethods methods = new AdditionalMethods();
+        GetUrl getUrl = new GetUrl();
+        AdminLogin adminLogin = new AdminLogin();
         getUrl.driverGet();
         getUrl.driverGetCurrentUrl("sitemap");
         Assert.assertTrue($(siteMapText).isDisplayed());

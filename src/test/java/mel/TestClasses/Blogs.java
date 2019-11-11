@@ -151,8 +151,7 @@ public class Blogs extends SetDriver {
     }
 
     public String getImageClass() {
-        String str = $(imageClass).getTagName();
-        return str;
+        return $(imageClass).getTagName();
     }
 
     public void checkImage() {
@@ -171,8 +170,7 @@ public class Blogs extends SetDriver {
     }
 
     public String getTextInEditBlogPage() {
-        String str2 = $(imageClass).getTagName();
-        return str2;
+        return $(imageClass).getTagName();
     }
 
     public void clearBlogFields() {
@@ -223,8 +221,7 @@ public class Blogs extends SetDriver {
     }
 
     public String getEmailValueInProfile() {
-        String str = $(emailInputInProfile).getAttribute("value");
-        return str;
+        return $(emailInputInProfile).getAttribute("value");
     }
 
     public void checkDownloadCoverImage() {

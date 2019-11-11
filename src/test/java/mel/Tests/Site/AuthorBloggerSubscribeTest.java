@@ -6,11 +6,7 @@ import mel.Helper.SetDriver;
 import mel.TestClasses.AuthorBloggerSubscribe;
 import mel.TestClasses.Registration;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 import static com.codeborne.selenide.Selenide.element;
 import static com.codeborne.selenide.Selenide.sleep;

@@ -70,18 +70,15 @@ public class AdminAddingUser extends SetDriver{
     }
 
     public String getRegistrationName() {
-        String str = $(adminRegistrationName).getAttribute("value");
-        return str;
+        return $(adminRegistrationName).getAttribute("value");
     }
 
     public String getRegistrationSurname() {
-        String str = $(adminRegistrationSurname).getAttribute("value");
-        return str;
+        return $(adminRegistrationSurname).getAttribute("value");
     }
 
     public String getRegistrationEmail() {
-        String str = $(adminRegistrationEmail).getAttribute("value");
-        return str;
+        return $(adminRegistrationEmail).getAttribute("value");
     }
 
     public void enterPasswordAndConfirm(String firstPassword, String lastPassword){
@@ -135,18 +132,15 @@ public class AdminAddingUser extends SetDriver{
     }
 
     public String getEditUserFirstName(){
-        String str = $(editUserFirstName).getAttribute("value");
-        return str;
+        return $(editUserFirstName).getAttribute("value");
     }
 
     public String getEditUserLastName(){
-        String str = $(editUserLastName).getAttribute("value");
-        return str;
+        return $(editUserLastName).getAttribute("value");
     }
 
     public String getEditUserEmail(){
-        String str = $(editUserEmail).getAttribute("value");
-        return str;
+        return $(editUserEmail).getAttribute("value");
     }
 
     public void deleteAddedUser(){

@@ -12,22 +12,21 @@ import java.util.ArrayList;
 
 public class AllBlogsTest extends SetDriver {
 
-    private AdditionalMethods methods = new AdditionalMethods();
-
-//    @AfterClass
-//    public void browserLogs() throws IOException {
-//        AdditionalMethods methods = new AdditionalMethods();
-//        ArrayList errors = new ArrayList();
-//        errors.add("adriver");
-//        errors.add("adx");
-//        errors.add("aidata");
-//        methods.getBrowserLogs(errors, "AllBlogsTest");
-//    }
+    @AfterClass
+    public void browserLogs() throws IOException {
+        AdditionalMethods methods = new AdditionalMethods();
+        ArrayList errors = new ArrayList();
+        errors.add("adriver");
+        errors.add("adx");
+        errors.add("aidata");
+        methods.getBrowserLogs(errors, "AllBlogsTest");
+    }
 
     @Test
     public void checkAllBlogersPage() {
         AllBlogsPage blogsPage = new AllBlogsPage();
         GetUrl getUrl = new GetUrl();
+        AdditionalMethods methods = new AdditionalMethods();
 
         getUrl.driverGet();
         methods.deleteCookie();

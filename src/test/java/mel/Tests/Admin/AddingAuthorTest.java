@@ -1,25 +1,25 @@
 package mel.Tests.Admin;
 
+import MelAppium.resources.config;
 import mel.AdminTestClasses.AdminAddingAuthor;
 import mel.AdminTestClasses.AdminLogin;
 import mel.Helper.AdditionalMethods;
 import mel.Helper.GetUrl;
-import mel.Helper.RunTestAgain;
 import mel.Helper.SetDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.Set;
 
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class AddingAuthorTest extends SetDriver {
 
-    private AdditionalMethods methods;
     private AdminLogin adminLogin;
     private GetUrl getUrl;
     private AdminAddingAuthor author;
-
+    private AdditionalMethods methods;
 
     @Test
     public void addingAuthor() throws InterruptedException {
@@ -40,11 +40,11 @@ public class AddingAuthorTest extends SetDriver {
         // два имени автора
         String firstNameOfTheAuthor = "firstName";
         String secondNameOfTheAuthor = "secondName";
-
         String aboutAuthor = "AboutAuthor";
 
         getUrl.driverGetAdminUrl();
-        adminLogin.adminAuthorisation("test@example.com", "123qwe11");
+        adminLogin.adminAuthorisation(config.getTestProperty("adminLogin"), config.getTestProperty("adminPass"));
+        sleep(2000);
         //попытка создания автора с незаполненным обязательным полем имени
         author.checkAddingAuthorWithIncorrectFields();
         Assert.assertTrue(author.isSaveButtonDisabled());
@@ -70,12 +70,12 @@ public class AddingAuthorTest extends SetDriver {
 
         String parentWindowId = getWebDriver().getWindowHandle();
         final Set<String> oldWindowsSet = getWebDriver().getWindowHandles();
-        methods.Wait(600);
+        sleep(400);
         author.clickInSortArrowButton();
-        methods.Wait(600);
+        sleep(400);
         author.clickInOpenInNewPageButton();
         methods.moveFocusToTheNewWindow(oldWindowsSet);
-        methods.Wait(600);
+        sleep(400);
 
         // проверка созданного автора в админке и фактического результата на сайте
         Assert.assertEquals(getWebDriver().getTitle(), secondNameOfTheAuthor + " " + secondSurname + " | Мел");
@@ -96,47 +96,30 @@ public class AddingAuthorTest extends SetDriver {
         int secondNumberSubscribers = author.convertSelectorToNumber(author.secondSubscribersCount);
         // проверка на сортировку по числу подписчиков
         author.compareTheNumbers(firstNumberSubscribers, secondNumberSubscribers);
+        sleep(500);
         // нахождение и удаление автора
-        methods.Wait(500);
         author.clickInSortArrowButton();
-        methods.Wait(500);
+        sleep(2000);
         author.clickInSortArrowButton();
-        methods.Wait(500);
+        sleep(500);
         author.clickIndropdownButton();
-        methods.Wait(500);
+        sleep(500);
         author.clickInDeleteButtons();
-        methods.Wait(500);
+        sleep(500);
         author.clickInSortArrowButton();
         // проврека на наличие блогера после удаления
-        if(methods.getTextFromSelector(author.authorNameAndSurname).equals(secondSurname + secondNameOfTheAuthor)){
+        if (methods.getTextFromSelector(author.authorNameAndSurname).equals(secondSurname + secondNameOfTheAuthor)) {
             org.testng.Assert.fail("Sorting not working");
         }
-
-        methods.Wait(500);
+        sleep(500);
         author.clickInSortArrowButton();
-        methods.Wait(500);
+        sleep(500);
         author.clickIndropdownButton();
+        sleep(500);
         author.clickInDeleteUserButton();
-        methods.Wait(500);
+        sleep(1000);
         Assert.assertEquals(methods.getTextFromSelector(author.deleteUserWithPublicationMessage), "Нельзя удалить автора, у которого есть хотя бы одна статья");
         author.clickInCloseButtonInDeleteUserWindow();
     }
 
-    @Test
-    public void deleteAuthor() {
-        author = new AdminAddingAuthor();
-        methods = new AdditionalMethods();
-        getUrl = new GetUrl();
-        adminLogin = new AdminLogin();
-
-        getUrl.driverGetAdminUrl();
-        author.clickOnAuthorTab();
-        author.clickInsortingPublicationButton();
-        methods.Wait(500);
-        author.clickInsortingPublicationButton();// для сортировки публикаций авторов у которых 0 публикаций
-        methods.Wait(500);
-        author.clickOnEditCreatedAuthor();
-        author.clickInDeleteUserButton();
-        author.clickOnConfirmDeleteButton();
-    }
 }

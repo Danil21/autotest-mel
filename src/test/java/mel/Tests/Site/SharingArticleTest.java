@@ -40,8 +40,8 @@ public class SharingArticleTest extends SetDriver {
         sharingArticle.sharingVk(expectedResult);
         // Sharing twitter
         sharingArticle.twitterSharing(expectedResult);
-        // Sharing flipbord
-        sharingArticle.sharingFlip();
+        // Sharing pinterest
+     //   sharingArticle.sharingFlip();
 
     }
 }

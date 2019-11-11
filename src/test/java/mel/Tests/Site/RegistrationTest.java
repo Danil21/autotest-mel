@@ -16,18 +16,13 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class RegistrationTest extends SetDriver {
 
-    private Registration registration;
-    private AdditionalMethods methods;
-    private Logout logout;
-    private GetUrl getUrl;
-
 
     @Test
     public void registration(String[] args) throws IOException {
-        methods = new AdditionalMethods();
-        getUrl = new GetUrl();
-        registration = new Registration();
-        logout = new Logout();
+        AdditionalMethods methods = new AdditionalMethods();
+        GetUrl getUrl = new GetUrl();
+        Registration registration = new Registration();
+        Logout logout = new Logout();
 
         getUrl.driverGet();
         String parentWindowId = getWebDriver().getWindowHandle();

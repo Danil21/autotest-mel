@@ -1,5 +1,6 @@
 package mel.Tests.Admin;
 
+import MelAppium.resources.config;
 import mel.AdminTestClasses.AdminBranding;
 import mel.AdminTestClasses.AdminLogin;
 import mel.Helper.AdditionalMethods;
@@ -15,27 +16,22 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class BrandingTest extends SetDriver {
 
-    private AdditionalMethods methods;
-    private GetUrl url = new GetUrl();
-    private AdminBranding adminBranding;
-    private AdminLogin adminLogin;
-
 
     @Test
     public void AdminBranding() {
-        methods = new AdditionalMethods();
-        adminBranding = new AdminBranding();
-        adminLogin = new AdminLogin();
-        url = new GetUrl();
+        AdditionalMethods methods = new AdditionalMethods();
+        AdminBranding adminBranding = new AdminBranding();
+        AdminLogin adminLogin = new AdminLogin();
+        GetUrl getUrl = new GetUrl();
 
         String brandingTitle = "brandingTitle" + methods.generateNumber();
         String link = "https://mel.fm";
         String editedLink = "https://yandex.ru";
-        String article = "https://qa" + url.choiceStand() + ".mel.fm/obrazovaniye/751928-british_design_marketing";
+        String article = "https://qa" + getUrl.choiceStand() + ".mel.fm/obrazovaniye/751928-british_design_marketing";
         String tag = "важный разговор";
 
-        url.driverGetAdminUrl();
-        adminLogin.adminAuthorisation("test@example.com", "123qwe11");
+        getUrl.driverGetAdminUrl();
+        adminLogin.adminAuthorisation(config.getTestProperty("adminLogin"),config.getTestProperty("adminPass"));
 
         // переходим на страницу брендирования и проверям имеются ли активные подложки. Если да, то удаляем все
         adminBranding.openBrandingTab();
@@ -67,14 +63,14 @@ public class BrandingTest extends SetDriver {
         sleep(1000);
 
         // открываем главную страницу и проверяем подложку
-        url.driverGet();
+        getUrl.driverGet();
         // проверяем наличие подложки и ссылки на главной странице
         if (!methods.getDisplayedElement(adminBranding.layoutBranding) & (!methods.getDisplayedElement(By.xpath("//*[@class='i-layout i-layout_branding']/a[@href='" + link + "']")))) {
             Assert.fail("Не отображается подложка на главной странице");
         }
 
         // открываем страницу рубрики и проверяем подложку
-        url.driverGetCurrentUrl("/rubric/school");
+        getUrl.driverGetCurrentUrl("/rubric/school");
         // проверяем наличие подложки и ссылки на странице рубрики
         if (!methods.getDisplayedElement(adminBranding.layoutBranding) & (!methods.getDisplayedElement(By.xpath("//*[@class='i-layout i-layout_branding']/a[@href='" + link + "']")))) {
             Assert.fail("Не отображается подложка на странице рубрики");
@@ -89,27 +85,27 @@ public class BrandingTest extends SetDriver {
         }
 
         // открываем страницу статьи по тегу "важный разговор"
-        url.driverGetCurrentUrl("vazhny_razgovor/2539804-change_school");
+        getUrl.driverGetCurrentUrl("vazhny_razgovor/2539804-change_school");
         // проверяем наличие подложки и ссылки на странице статьи по тегу "важный разговор"
         if (!methods.getDisplayedElement(adminBranding.layoutBranding) & (!methods.getDisplayedElement(By.xpath("//*[@class='i-layout i-layout_branding']/a[@href='" + link + "']")))) {
             Assert.fail("Не отображается подложка на странице статьи по определенному тегу");
         }
 
         // открываем брендирование в админке
-        url.driverGetAdminUrl();
+        getUrl.driverGetAdminUrl();
         adminBranding.openBrandingTab();
 
         // редактируем ссылку у подложки
         adminBranding.editCover(editedLink);
         sleep(2000);
         // открываем главную страницу и проверяем что изменилсь ссылка, а подложка по-прежнему активна
-        url.driverGet();
+        getUrl.driverGet();
         if (!methods.getDisplayedElement(adminBranding.layoutBranding) & (!methods.getDisplayedElement(By.xpath("//*[@class='i-layout i-layout_branding']/a[@href='" + editedLink + "']")))) {
             Assert.fail("Не отображается подложка на главной или не изменилась ссылка после редактирования");
         }
 
         // открываем брендирование в админке
-        url.driverGetAdminUrl();
+        getUrl.driverGetAdminUrl();
         adminBranding.openBrandingTab();
         sleep(1000);
         // удаляем созданную подложку и проверяем, что она удалилась

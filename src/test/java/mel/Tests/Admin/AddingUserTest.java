@@ -8,7 +8,6 @@ import mel.Helper.AdditionalMethods;
 import mel.Helper.GetUrl;
 import mel.Helper.MailAuthorisation;
 import mel.Helper.SetDriver;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,26 +15,19 @@ import java.util.Set;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.sleep;
-import static com.codeborne.selenide.WebDriverRunner.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class AddingUserTest extends SetDriver{
 
-    private AdditionalMethods methods;
-    private AdminLogin adminLogin;
-    private AdminAddingUser addingUser;
-    private GetUrl getUrl;
-    private AdminLogout logout;
-    private MailAuthorisation mailAuthorisation;
-
     @Test
     public void addingAdminUser() {
-        methods = new AdditionalMethods();
-        getUrl = new GetUrl();
-        adminLogin = new AdminLogin();
-        mailAuthorisation = new MailAuthorisation();
-        logout = new AdminLogout();
-        addingUser = new AdminAddingUser();
+        AdditionalMethods methods = new AdditionalMethods();
+        GetUrl getUrl = new GetUrl();
+        AdminLogin adminLogin = new AdminLogin();
+        MailAuthorisation mailAuthorisation = new MailAuthorisation();
+        AdminLogout logout = new AdminLogout();
+        AdminAddingUser addingUser = new AdminAddingUser();
 
         // получение рандомной почты для регистрируемого пользователя
         String UserEmail = methods.generateStr();

@@ -8,9 +8,6 @@ import mel.TestClasses.Registration;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.util.Set;
-
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class RegistrationMobileTest extends SetDriver {
     private AdditionalMethods methods = new AdditionalMethods();

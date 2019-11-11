@@ -32,7 +32,7 @@ public class Login extends SetDriver {
     private By enterButton = By.xpath("//*[.='Вход на сайт']");
     // private   By incorrectPasswordText = By.xpath("//*[text()='Неверный пароль' and @class='g-input__hint']"); //пока не используется
     public  By incorrectEmailAndPasswordText = By.xpath("//*[@class='b-auth-email__error-message']");
-    public By  incorrectEmailText = By.xpath("//*[text()='Такого пользователя не существует' and @class='g-input__hint']");
+    public By  incorrectEmailText = By.xpath("//div[text()='Пользователь с таким email не найден' and @class='g-input__hint']");
     public  By correctRecoveryPasswordText = By.xpath("//*[text()='Письмо успешно отправлено на указанный вами адрес.' and @class='b-password-recovery-request__message']");
     public  By shortPasswordText = By.xpath("//*[text()='Пароль должен содержать минимум 8 символов' and @class='g-input__hint']");
     public  By differentPasswordText = By.xpath("//*[text()='Пароли не совпадают' and @class='g-input__hint']");
@@ -112,8 +112,7 @@ public class Login extends SetDriver {
     }
 
     public String getFontFamilyValue(){
-        String str = $(freshOnMelBlock).getCssValue("font-family");
-        return str;
+        return $(freshOnMelBlock).getCssValue("font-family");
     }
 
     public void checkPageRefresh() {

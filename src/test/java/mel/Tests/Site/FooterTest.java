@@ -1,22 +1,14 @@
 package mel.Tests.Site;
 
-import mel.Helper.AdditionalMethods;
 import mel.Helper.GetUrl;
 import mel.Helper.SetDriver;
 import mel.TestClasses.Footer;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 
 public class FooterTest extends SetDriver {
 
-    private Footer footer;
-    private GetUrl getUrl;
-
-//    @AfterClass
+    //    @AfterClass
 //    public void browserLogs() throws IOException {
 //        AdditionalMethods methods = new AdditionalMethods();
 //
@@ -29,8 +21,8 @@ public class FooterTest extends SetDriver {
 
     @Test
     public void footer() {
-        footer = new Footer();
-        getUrl = new GetUrl();
+        Footer footer = new Footer();
+        GetUrl getUrl = new GetUrl();
 
         getUrl.driverGet();
 

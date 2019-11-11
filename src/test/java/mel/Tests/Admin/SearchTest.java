@@ -1,5 +1,6 @@
 package mel.Tests.Admin;
 
+import MelAppium.resources.config;
 import mel.AdminTestClasses.AdminBlogs;
 import mel.AdminTestClasses.AdminLogin;
 import mel.AdminTestClasses.AdminSearch;
@@ -13,13 +14,13 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class SearchTest extends SetDriver {
     private AdminSearch search = new AdminSearch();
     private GetUrl getUrl = new GetUrl();
-    private AdminLogin login = new AdminLogin();
+    private AdminLogin adminLogin = new AdminLogin();
     private AdminBlogs blogs = new AdminBlogs();
 
     @Test
     public void checkSearch() {
         getUrl.driverGetAdminUrl();
-        login.adminAuthorisation("test@example.com", "123qwe11");
+        adminLogin.adminAuthorisation(config.getTestProperty("adminLogin"),config.getTestProperty("adminPass"));
 
         search.checkSearchPublication("publication");
 

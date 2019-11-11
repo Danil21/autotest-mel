@@ -1,5 +1,6 @@
 package mel.Tests.Admin;
 
+import MelAppium.resources.config;
 import mel.AdminTestClasses.AdminLogin;
 import mel.AdminTestClasses.LockEditingPublication;
 import mel.Helper.AdditionalMethods;
@@ -25,7 +26,7 @@ public class LockEdititngPublicationTest extends SetDriver {
     public void LockEditUsers() {
 
         getUrl.driverGetAdminUrl();
-        adminLogin.adminAuthorisation("test@example.com", "123qwe11");
+        adminLogin.adminAuthorisation(config.getTestProperty("adminLogin"),config.getTestProperty("adminPass"));
         lockEditingPublication.clickInFirstPublication();
 
         lockEditingPublication.editPublicationFirsAdmin("Edit Title", "новости", "тут изменили текст для чего то");

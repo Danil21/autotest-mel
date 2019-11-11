@@ -2,7 +2,6 @@ package MelAppium.TestClass;
 
 import mel.Helper.AdditionalMethods;
 import mel.Helper.SetDriver;
-import mel.TestClasses.SharingArticle;
 import mel.TestClasses.SocialNetworksAuthorisation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;

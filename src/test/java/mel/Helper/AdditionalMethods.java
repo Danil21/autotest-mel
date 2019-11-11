@@ -34,7 +34,6 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class AdditionalMethods extends SetDriver {
 
-    private Logout logout;
     private By closeNotificationCookie = By.xpath("//div[@data-params='{\"type\":\"close-notification\"}']");
     private By closeNotificationCookieReact = By.xpath("//button[contains(@class,'cookie-notification__close-button_desktop')]");
     private By closeShearTop = By.xpath("//div[contains(@class, 'floatbar__close-icon')]");
@@ -48,29 +47,26 @@ public class AdditionalMethods extends SetDriver {
     }
 
     public void outputFromAnAccountSocialLogin() {
-        logout = new Logout();
+        Logout logout = new Logout();
         logout.exitToAuthorisationSocial();
     }
 
     public int generateNumber() {
         int a = 0;
         int b = 10000;
-        int randomNumber = a + (int) (Math.random() * b);
-        return randomNumber;
+        return a + (int) (Math.random() * b);
     }
 
     public String generateTitleRandom(){
         int a = 0;
         int b = 10000;
         int randomNumber = a + (int) (Math.random() * b);
-        String title = "Title" + randomNumber;
-        return title;
+        return "Title" + randomNumber;
     }
 
 
     public String generateRandomCharSequence(int AmmountOfLetters) {
-        String str = RandomStringUtils.randomAlphabetic(AmmountOfLetters);
-        return str;
+        return RandomStringUtils.randomAlphabetic(AmmountOfLetters);
     }
 
     public String generateStr() {
@@ -82,8 +78,7 @@ public class AdditionalMethods extends SetDriver {
         int FirstRandomNumber = a + (int) (Math.random() * b);
         int SecondRandomNumber = a + (int) (Math.random() * b);
 
-        String str3 = FirstRandomNumber + str1 + SecondRandomNumber + str2;
-        return str3;
+        return FirstRandomNumber + str1 + SecondRandomNumber + str2;
     }
 
     public void imageDownload(String str) {
@@ -161,23 +156,19 @@ public class AdditionalMethods extends SetDriver {
     }
 
     public String getTextFromSelector(By selector) {
-        String str = element(selector).getText();
-        return str;
+        return element(selector).getText();
     }
 
     public String getTextInsideElement(By selector) {
-        String str = element(selector).innerText();
-        return str;
+        return element(selector).innerText();
     }
 
     public String getHrefFromSelector(By selector) {
-        String str = $(selector).getAttribute("href");
-        return str;
+        return $(selector).getAttribute("href");
     }
 
     public String getNameAttributeElement(By name) {
-        String str = element(name).getAttribute("name");
-        return str;
+        return element(name).getAttribute("name");
     }
 
 
@@ -204,7 +195,10 @@ public class AdditionalMethods extends SetDriver {
         if (!closure) {
             $(closeNotificationCookieReact).click();
         }
-        else {
+         else if (hidentNottif) {
+            scroll("500");
+        }
+         else {
             $(closeNotificationCookie).click();
         }
     }

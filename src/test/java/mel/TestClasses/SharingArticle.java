@@ -1,6 +1,5 @@
 package mel.TestClasses;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.WebDriverRunner;
 import mel.Helper.AdditionalMethods;
 import mel.Helper.SetDriver;
@@ -102,19 +101,21 @@ public class SharingArticle extends SetDriver{
                 okPasswordInput, okLoginButton, textOk);
     }
 
-    public void sharingFlip() {
+    public void sharingPinterest() {
         WebDriver driver = WebDriverRunner.driver().getWebDriver();
         methods = new AdditionalMethods();
         driver.navigate().refresh();
         String parentWindowId = driver.getWindowHandle();
         final Set<String> oldWindowsSet = driver.getWindowHandles();
-        $(flipSharingButton).click();
-        methods.moveFocusToTheNewWindow(oldWindowsSet);
-        $(flipLogIn).click();
-        $(clickFbLogin).click();
-        $(textFlip).shouldBe(Condition.visible);
-        $(flipSharing).click();
-        getWebDriver().close();
-        driver.switchTo().window(parentWindowId);
+
+
+//        $(flipSharingButton).click();
+//        methods.moveFocusToTheNewWindow(oldWindowsSet);
+//        $(flipLogIn).click();
+//        $(clickFbLogin).click();
+//        $(textFlip).shouldBe(Condition.visible);
+//        $(flipSharing).click();
+//        getWebDriver().close();
+//        driver.switchTo().window(parentWindowId);
     }
 }

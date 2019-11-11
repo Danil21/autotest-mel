@@ -1,5 +1,6 @@
 package mel.Tests.Admin;
 
+import MelAppium.resources.config;
 import mel.AdminTestClasses.AdminLogin;
 import mel.AdminTestClasses.AdminLogout;
 import mel.Helper.AdditionalMethods;
@@ -13,24 +14,19 @@ import static com.codeborne.selenide.Selenide.title;
 
 public class LoginTest extends SetDriver {
 
-    private AdditionalMethods methods;
-    private GetUrl getUrl;
-    private AdminLogout logout;
-    private AdminLogin login;
-
     @Test
     public void authorisationAndLogout() {
-        methods = new AdditionalMethods();
-        getUrl = new GetUrl();
-        logout = new AdminLogout();
-        login = new AdminLogin();
+        AdditionalMethods methods = new AdditionalMethods();
+        GetUrl getUrl = new GetUrl();
+        AdminLogout logout = new AdminLogout();
+        AdminLogin adminLogin = new AdminLogin();
 
         getUrl.driverGetAdminUrl();
-        login.adminAuthorisation("str@str.com", "123qwe11");
+        adminLogin.adminAuthorisation("str@str.com", "123qwe11");
         sleep(1000);
-        Assert.assertEquals(methods.getTextFromSelector(login.incorrectEmailAndPasswordText), "Неверный email или пароль");
-        login.clearFields();
-        login.adminAuthorisation("test@example.com", "123qwe11");
+        Assert.assertEquals(methods.getTextFromSelector(adminLogin.incorrectEmailAndPasswordText), "Неверный email или пароль");
+        adminLogin.clearFields();
+        adminLogin.adminAuthorisation(config.getTestProperty("adminLogin"),config.getTestProperty("adminPass"));
         logout.adminLogout();
         Assert.assertEquals(title(), "Публикации");
     }

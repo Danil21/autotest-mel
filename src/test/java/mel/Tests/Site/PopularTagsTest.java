@@ -14,10 +14,7 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class PopularTagsTest extends SetDriver {
 
-    private AdditionalMethods methods;
     private GetUrl getUrl = new GetUrl();
-    private PopularTags popularTags;
-    private String popularUrl = "/tags/popular/1";
 
 //    @AfterSuite
 //    public void browserLogs() throws IOException {
@@ -32,8 +29,8 @@ public class PopularTagsTest extends SetDriver {
 
     @Test
     public void PopularTags() {
-        methods = new AdditionalMethods();
-        popularTags = new PopularTags();
+        AdditionalMethods methods = new AdditionalMethods();
+        PopularTags popularTags = new PopularTags();
 
         // check footer link from main page
         getUrl.driverGet();
@@ -54,6 +51,7 @@ public class PopularTagsTest extends SetDriver {
         popularTags.checkPagination();
 
         // move from card block to tag page and compare tag's title
+        String popularUrl = "/tags/popular/1";
         getUrl.driverGetCurrentUrl(popularUrl);
         String popularCardTitle = methods.getTextFromSelector(popularTags.popularCardTitle);
         popularTags.checkTagCard();

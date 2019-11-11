@@ -22,13 +22,13 @@ public class SubscribeNewsLetterTest extends SetDriver {
     private SubscribeNewsLetter subscribeNewsLetter;
     private GetUrl getUrl;
 
-//    @AfterClass
-//    public void browserLogs() throws IOException {
-//        methods = new AdditionalMethods();
-//        ArrayList errors = new ArrayList();
-//        errors.add("yandex");
-//        methods.getBrowserLogs(errors, "SubscribeNewsLetterTest");
-//    }
+    @AfterClass
+    public void browserLogs() throws IOException {
+        methods = new AdditionalMethods();
+        ArrayList errors = new ArrayList();
+        errors.add("yandex");
+        methods.getBrowserLogs(errors, "SubscribeNewsLetterTest");
+    }
 
     @Test
     public void subscribeNewsLetter() {
@@ -37,7 +37,7 @@ public class SubscribeNewsLetterTest extends SetDriver {
         getUrl = new GetUrl();
 
         getUrl.driverGet();
-        //methods.closeNotificationCookie();
+        methods.closeNotificationCookie();
 
         String str1 = "testpablo";
         String str2 = "@p33.org";
@@ -72,6 +72,9 @@ public class SubscribeNewsLetterTest extends SetDriver {
         getUrl = new GetUrl();
 
         getUrl.driverGet();
+
+
+
 
     }
 

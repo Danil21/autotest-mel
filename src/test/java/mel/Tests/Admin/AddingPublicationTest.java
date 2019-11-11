@@ -1,5 +1,6 @@
 package mel.Tests.Admin;
 
+import MelAppium.resources.config;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.WebDriverRunner;
 import mel.AdminTestClasses.*;
@@ -60,7 +61,7 @@ public class AddingPublicationTest extends SetDriver {
 
 
         getUrl.driverGetAdminUrl();
-        adminLogin.adminAuthorisation("test@example.com", "123qwe11");
+        adminLogin.adminAuthorisation(config.getTestProperty("adminLogin"),config.getTestProperty("adminPass"));
         sleep(2000);
         addingPublication.clickInNewPublication();
         autosave.clickInPublicationSaveButton();

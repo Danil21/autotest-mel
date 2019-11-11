@@ -5,6 +5,7 @@
             <class name="mel.Tests.Admin.AddingUserTest"/>
             <class name="mel.Tests.Admin.LoginTest"/>
             <class name="mel.Tests.Admin.RubricatorTest"/>
+            <class name="mel.Tests.Admin.BrandingTest"/>
             <class name="mel.Tests.Admin.TagsTest"/>
             <class name="mel.Tests.Admin.BlogsTest"/>
             <class name="mel.Tests.Admin.AddingPublicationTest"/>

@@ -6,22 +6,13 @@ import mel.Helper.SetDriver;
 import mel.TestClasses.Registration;
 import mel.TestClasses.TagSubscribe;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class TagSubscribtionTest extends SetDriver {
 
-    private Registration registration;
-    private AdditionalMethods methods;
-    private TagSubscribe tagSubscribe;
-    private GetUrl getUrl;
-
-//    @AfterClass
+    //    @AfterClass
 //    public void browserLogs() throws IOException {
 //        methods = new AdditionalMethods();
 //
@@ -32,13 +23,13 @@ public class TagSubscribtionTest extends SetDriver {
 
     @Test
     public void tagSubscribe() {
-        methods = new AdditionalMethods();
-        tagSubscribe = new TagSubscribe();
-        getUrl = new GetUrl();
-        registration = new Registration();
+        AdditionalMethods methods = new AdditionalMethods();
+        TagSubscribe tagSubscribe = new TagSubscribe();
+        GetUrl getUrl = new GetUrl();
+        Registration registration = new Registration();
 
         getUrl.driverGet();
-        //methods.closeNotificationCookie();
+        methods.closeNotificationCookie();
         tagSubscribe.subscribeOnTagGuest();
         registration.userRegistrationWithLoginButton("FirstName", "LastName", methods.generateStr(), "12345678");
 

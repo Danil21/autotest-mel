@@ -11,24 +11,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class AllAuthorsTest extends SetDriver {
-    private AllAuthorsPage allAuthors = new AllAuthorsPage();
-    private GetUrl getUrl = new GetUrl();
-    private AdditionalMethods methods = new AdditionalMethods();
 
-//    @AfterClass
-//    public void browserLogs() throws IOException {
-//        AdditionalMethods methods = new AdditionalMethods();
-//        ArrayList errors = new ArrayList();
-//        errors.add("adriver");
-//        errors.add("adx");
-//        methods.getBrowserLogs(errors, "AllAuthorsTest");
-//    }
+    @AfterClass
+    public void browserLogs() throws IOException {
+        AdditionalMethods methods = new AdditionalMethods();
+        ArrayList errors = new ArrayList();
+        errors.add("adriver");
+        errors.add("adx");
+        methods.getBrowserLogs(errors, "AllAuthorsTest");
+    }
 
     @Test
     public void checkAllAuthorsPage() {
-        getUrl.driverGet();
+        AdditionalMethods methods = new AdditionalMethods();
+        AllAuthorsPage allAuthors = new AllAuthorsPage();
+        GetUrl getUrl = new GetUrl();
 
-        methods.deleteCookie();
+
+        getUrl.driverGet();
+        methods.closeNotificationCookie();
+
         allAuthors.checkSearchWithAuthor();
         allAuthors.checkTagsInAuthorCard();
         allAuthors.checkCreatePost();

@@ -198,13 +198,11 @@ public class AuthorBloggerSubscribe extends SetDriver {
         private By deleteTagInPublicationButton = By.cssSelector(".b-tag__icon > div");
 
         public String getSeoTitleOnSite() {
-            String str = $(seoTitleTagOnSite).getAttribute("content");
-            return str;
+            return $(seoTitleTagOnSite).getAttribute("content");
         }
 
         public String getSeoDescriptionOnSite() {
-            String str = $(seoDescriptionTagOnSite).getAttribute("content");
-            return str;
+            return $(seoDescriptionTagOnSite).getAttribute("content");
         }
 
         public String getUrlTagInAdmin() {

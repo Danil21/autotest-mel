@@ -72,7 +72,7 @@ public class SubscribeNewsLetter extends SetDriver {
     public void checkSubscribeUnderBlog(String email) {
         $(inputEmailUnderBlog).scrollIntoView(false).click();
         $(greenAirplaneUnderBlog).click();
-        //TODO как починят нужно поменять локатор для сообщения об ошибке
+        // как починят нужно поменять локатор для сообщения об ошибке
         $(textErrorSubscribe).shouldBe(Condition.visible);
         $(inputEmailUnderBlog).sendKeys(email);
         $(inputEmailUnderBlog).sendKeys(Keys.ENTER);

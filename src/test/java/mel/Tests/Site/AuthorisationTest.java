@@ -1,7 +1,7 @@
 package mel.Tests.Site;
 
+import MelAppium.resources.config;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Config;
 import mel.Helper.AdditionalMethods;
 import mel.Helper.GetUrl;
 import mel.Helper.MailAuthorisation;
@@ -27,19 +27,19 @@ public class AuthorisationTest extends SetDriver {
     private GetUrl getUrl;
     private MailAuthorisation mailAuthorisation;
 
-//    @AfterClass
-//    public void browserLogs() throws IOException {
-//        methods = new AdditionalMethods();
-//        getUrl = new GetUrl();
-//
-//        ArrayList errors = new ArrayList();
-//        errors.add("mel.fm/auth - Failed to load resource: the server responded with a status of 404");
-//        errors.add("mel.fm/auth - Failed to load resource: the server responded with a status of 422");
-//        errors.add("mel.fm/auth/recovery-email - Failed to load resource: the server responded with a status of 404");
-//        errors.add("mail.ru");
-//        errors.add("adriver");
-//        methods.getBrowserLogs(errors, "AuthorisationTest");
-//    }
+    @AfterClass
+    public void browserLogs() throws IOException {
+        methods = new AdditionalMethods();
+        getUrl = new GetUrl();
+
+        ArrayList errors = new ArrayList();
+        errors.add("mel.fm/auth - Failed to load resource: the server responded with a status of 404");
+        errors.add("mel.fm/auth - Failed to load resource: the server responded with a status of 422");
+        errors.add("mel.fm/auth/recovery-email - Failed to load resource: the server responded with a status of 404");
+        errors.add("mail.ru");
+        errors.add("adriver");
+        methods.getBrowserLogs(errors, "AuthorisationTest");
+    }
 
     @Test
     public void authorisation() throws IOException {
@@ -74,16 +74,17 @@ public class AuthorisationTest extends SetDriver {
         mailAuthorisation = new MailAuthorisation();
 
         getUrl.driverGet();
+        methods.closeNotificationCookie();
         // recovery password with incorrect email
         autoLogin.passwordRecovery("estendr1@gmail.com");
-//        $(autoLogin.incorrectEmailText).shouldBe(Condition.text("Такого пользователя не существует"));
+        $(autoLogin.incorrectEmailText).shouldBe(Condition.text("Пользователь с таким email не найден"));
         // recovery password with correct email
         autoLogin.passwordRecoveryAfterIncorrectSend("test153153153@mail.ru");
         $(autoLogin.correctRecoveryPasswordText).shouldHave(Condition.text("Письмо успешно отправлено на указанный вами адрес."));
         autoLogin.clickInCloseButtonInPasswordRecoveryWindow();
 
         open("https://mail.google.com");
-        mailAuthorisation.emailAuthorisation("test153153153@gmail.com", "knock705b");
+        mailAuthorisation.emailAuthorisation(config.getTestProperty("gmailLogin"), config.getTestProperty("gmailPass"));
 
         final Set<String> oldWindowsSet = getWebDriver().getWindowHandles();
 
