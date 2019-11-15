@@ -41,4 +41,5 @@ public class AdvertisingTest extends SetDriver {
         sleep(1000);
         advertisingPage.checkAdvertising(mediakitTitle, priceTitle);
     }
+
 }

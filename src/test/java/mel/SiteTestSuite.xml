@@ -1,5 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="AllTests" verbose="10">
+<suite name="browserName" verbose="10"  >
+
     <test name="SiteTest" >
         <classes>
             <class name="mel.Tests.Site.ArchiveTest"/>
@@ -9,18 +10,18 @@
             <class name="mel.Tests.Site.CheckErrorPageTest"/>
             <class name="mel.Tests.Site.CommentTest"/>
             <class name="mel.Tests.Site.DirectiveTest"/>
-             <class name="mel.Tests.Site.MoreArticlesTest"/>
-             <class name="mel.Tests.Site.ProfileTest"/>
-             <class name="mel.Tests.Site.SearchTest"/>
-             <class name="mel.Tests.Site.BloggerTest"/>
-             <class name="mel.Tests.Site.SharingArticleTest"/>
-             <class name="mel.Tests.Site.SubscribeNewsLetterTest"/>
-             <class name="mel.Tests.Site.TagSubscribtionTest"/>
-             <class name="mel.Tests.Site.OpenInAdminTest"/>
-             <class name="mel.Tests.Site.AdvertisingTest"/>
-             <class name="mel.Tests.Site.AllAuthorsTest"/>
-             <class name="mel.Tests.Site.AllBlogsTest"/>
-             <class name="mel.Tests.Site.PopularTagsTest"/>
-         </classes>
-     </test>
+            <class name="mel.Tests.Site.MoreArticlesTest"/>
+            <class name="mel.Tests.Site.ProfileTest"/>
+            <class name="mel.Tests.Site.SearchTest"/>
+            <class name="mel.Tests.Site.BloggerTest"/>
+            <class name="mel.Tests.Site.SharingArticleTest"/>
+            <class name="mel.Tests.Site.SubscribeNewsLetterTest"/>
+            <class name="mel.Tests.Site.TagSubscribtionTest"/>
+            <class name="mel.Tests.Site.OpenInAdminTest"/>
+            <class name="mel.Tests.Site.AdvertisingTest"/>
+            <class name="mel.Tests.Site.AllAuthorsTest"/>
+            <class name="mel.Tests.Site.AllBlogsTest"/>
+            <class name="mel.Tests.Site.PopularTagsTest"/>
+        </classes>
+    </test>
  </suite>

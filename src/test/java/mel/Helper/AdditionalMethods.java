@@ -160,11 +160,11 @@ public class AdditionalMethods extends SetDriver {
     }
 
     public String getTextInsideElement(By selector) {
-        return element(selector).innerText();
+        return $(selector).innerText();
     }
 
     public String getHrefFromSelector(By selector) {
-        return $(selector).getAttribute("href");
+        return element(selector).getAttribute("href");
     }
 
     public String getNameAttributeElement(By name) {

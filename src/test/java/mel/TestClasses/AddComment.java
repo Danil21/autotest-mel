@@ -30,7 +30,6 @@ public class AddComment extends SetDriver {
     public By commentHeader = By.xpath("//div[contains(@class,'comments-header')]");
     private By buttonToСomments = By.xpath("//*[text()='К комментариям']");
 
-    public By textInEmail = By.xpath("//*[contains(text(),'Такой \"кудрявый\" текст читать просто невозможно')]");
 
     public void insertAndAddComment(String comment, String answerComment) {
         $(fieldForComment).click();
@@ -40,11 +39,10 @@ public class AddComment extends SetDriver {
         $(answerButton).click();
         $(fieldForAnswerComment).sendKeys(answerComment);
         $(enterAnswerCommentButton).click();
-        $(commentHeader).shouldBe(Condition.text("Комментарии(2)")); //переделать
     }
 
-    public void checkButtonTocomments() {
-        $(buttonToСomments).click();
+    public void checkButtonToComments() {
+       $(buttonToСomments).shouldHave(Condition.text("К комментариям")).click();
     }
     public void deleteComment() {
         $(deleteAnswerCommentButton).click();
@@ -57,8 +55,7 @@ public class AddComment extends SetDriver {
 
     public void clickInShowMoreButton() {
         AdditionalMethods methods = new AdditionalMethods();
-        $(showMoreButton).scrollTo();
-
+        $(showMoreButton).shouldHave(Condition.visible).scrollTo();
         methods.closeSheareTop();
         $(showMoreButton).click();
     }
@@ -84,7 +81,7 @@ public class AddComment extends SetDriver {
         }
     }
 
-    public boolean commentHeader() {
+    public boolean checkIsDisplayedCommentHeader() {
         try {
             return ($(commentHeader).isDisplayed());
         } catch (NoSuchElementException e) {

@@ -18,7 +18,7 @@ public class MailAuthorisation extends SetDriver {
     private By mailBoxLetterRegistrationButton = By.xpath("//a[text()=' Зарегистрироваться ']");
     private By mailBoxLetterPasswordRecovery = By.xpath("//*[.=' Задать новый пароль ']");
     private By recoveryPasswordForAdminUserButton = By.partialLinkText("Задать пароль");
-    public By textInComplaintReviewLetter = By.xpath("//*[contains(text(),'пожаловался на комментарий пользователя')]");
+    public By textInComplaintReviewLetter = By.xpath("//p[contains(text(),'Пользователь')]");
     public By textMessageReviewLetter = By.xpath("//p[contains(text(),'Текст комментария:')]");
     private By recoveryPasswordButtonInLoginPopup = By.xpath("//span[contains(@class,'recovery-link')]");
     private By recoveryEmailInput = By.xpath("//div[contains(@class,'recovery-request__email')]/descendant::input");

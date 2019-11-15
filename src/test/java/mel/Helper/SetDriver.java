@@ -5,39 +5,49 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
-import static io.github.bonigarcia.wdm.DriverManagerType.CHROME;
 import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 
 
 public abstract class SetDriver extends AdditionalMethodsMobile {
 
-    private static WebDriver driver;
+    WebDriver driver;
     public static WebDriverWait wait;
+
+    @Parameters("browserName")
+    @BeforeTest
+    WebDriver getDriver(String browserName) {
+        if (browserName.equals("firefox")) {
+            Configuration.browser = "firefox";
+        } else if (browserName.equals("chrome")) {
+            Configuration.browser = "chrome";
+        }
+
+        return driver;
+    }
 
     @BeforeClass
     public static void setUpBeforeClass() throws MalformedURLException {
+        WebDriver driver;
 
         int testRunArea = 1;
 
         switch (testRunArea) {
             case 1:
-                Configuration.browser = "chrome";
-                WebDriverManager.getInstance(CHROME).setup();
+                // Configuration.browser = "chrome";
+                //  WebDriverManager.getInstance(CHROME).setup();
                 // System.setProperty("webdriver.chrome.driver", ".//chromedriver.exe");
                 Configuration.timeout = 10000;
                 Configuration.browserSize = "1280x1024";
@@ -48,16 +58,20 @@ public abstract class SetDriver extends AdditionalMethodsMobile {
             case 2:
                 DesiredCapabilities browser = new DesiredCapabilities();
                 browser.setBrowserName("chrome");
-                browser.setVersion("76");
+                browser.setBrowserName("firefox");
+                browser.setVersion("77");
                 browser.setCapability("enableVNC", true);
-                driver = new RemoteWebDriver(URI.create("http://localhost:4444/wd/hub").toURL(), browser);
-                setWebDriver(driver);
-                // Configuration.remote = "";
-                //Configuration.browserVersion ="";
+                // browser.setCapability("enableVideo", true);
+                Configuration.remote = "http://167.71.83.66:4444/wd/hub";
+                //  driver = new RemoteWebDriver(URI.create("http://167.71.83.66:4444/wd/hub").toURL(), browser);
+                // setWebDriver(driver);
+
+                Configuration.browserSize = "1280x1024";
+                Configuration.savePageSource = false;
+                Configuration.reportsFolder = "test-result/desktop";
                 break;
 
             case 3:
-                AndroidDriver<MobileElement> driver;
                 Configuration.reportsFolder = "test-result/mobile";
                 Configuration.savePageSource = false;
                 DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -86,9 +100,11 @@ public abstract class SetDriver extends AdditionalMethodsMobile {
         options.addArguments("--disable-gpu");  */
     }
 
-    @AfterClass
+
+    @AfterTest
     public static void tearDownAfterClass() {
         getWebDriver().close();
+
 //        AdditionalMethods methods = new AdditionalMethods();
 //        methods.onExecutionFinish();
     }

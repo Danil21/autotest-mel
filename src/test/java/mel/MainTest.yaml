@@ -1,0 +1,29 @@
+name: mainSuite
+threadCount: 4
+
+tests:
+  - name: Regression2
+    parameters: { count: 10 }
+    excludedGroups: [ broken ]
+    classes:
+      - mel.Tests.Site.ArchiveTest
+      - mel.Tests.Site.AuthorisationSocialTest
+      - mel.Tests.Site.AuthorisationTest
+      - mel.Tests.Site.AuthorBloggerSubscribeTest
+      - mel.Tests.Site.CheckErrorPageTest
+      - mel.Tests.Site.CommentTest
+      - mel.Tests.Site.DirectiveTest
+      - mel.Tests.Site.MoreArticlesTest
+      - mel.Tests.Site.ProfileTest
+      - mel.Tests.Site.SearchTest
+      - mel.Tests.Site.BloggerTest
+      - mel.Tests.Site.SharingArticleTest
+      - mel.Tests.Site.SubscribeNewsLetterTest
+      - mel.Tests.Site.TagSubscribtionTest
+      - mel.Tests.Site.OpenInAdminTest
+      - mel.Tests.Site.AdvertisingTest
+      - mel.Tests.Site.AllAuthorsTest
+      - mel.Tests.Site.AllBlogsTest
+      - mel.Tests.Site.PopularTagsTest
+
+    verbose="10"  parallel="classes" thread-count="1"

@@ -72,6 +72,8 @@
             <version>${testng.version}</version>
         </dependency>
 
+
+
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
@@ -120,6 +122,12 @@
             <groupId>io.appium</groupId>
             <artifactId>java-client</artifactId>
             <version>${java-client.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.yaml</groupId>
+             <artifactId>snakeyaml</artifactId>
+             <version>1.23</version>
         </dependency>
 
     </dependencies>
