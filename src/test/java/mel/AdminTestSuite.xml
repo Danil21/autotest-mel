@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="AllTests" verbose="10">
+<suite name="AllTests" verbose="10" thread-count="2">
     <test name="AdminTest" >
         <classes>
             <class name="mel.Tests.Admin.AddingUserTest"/>

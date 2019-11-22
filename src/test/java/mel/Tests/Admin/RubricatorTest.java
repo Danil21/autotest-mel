@@ -16,18 +16,20 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class RubricatorTest extends SetDriver {
 
+    private AdditionalMethods methods = new AdditionalMethods();
+    private AdminRubricator rubricator = new AdminRubricator();
+    private GetUrl getUrl = new GetUrl();
+    private AdminLogin adminLogin = new AdminLogin();
+
 
     @Test
     public void rubricator() {
-        AdditionalMethods methods = new AdditionalMethods();
-        AdminRubricator rubricator = new AdminRubricator();
-        GetUrl getUrl = new GetUrl();
-        AdminLogin adminLogin = new AdminLogin();
 
         getUrl.driverGetAdminUrl();
-        adminLogin.adminAuthorisation(config.getTestProperty("adminLogin"),config.getTestProperty("adminPass"));
+        adminLogin.adminAuthorisation(config.getTestProperty("adminLogin"), config.getTestProperty("adminPass"));
+        sleep(2000);
         $(rubricator.rubricatorTab).click();
-
+        sleep(1000);
         //add new rubric
         rubricator.addNewRubric("Testing");
         sleep(3000);
@@ -51,6 +53,7 @@ public class RubricatorTest extends SetDriver {
 
         //edit rubric
         $(rubricator.rubricatorTab).click();
+        sleep(1000);
         rubricator.editRubric("2", "TestTitleSeo", "TestDescriptionSeo");
         sleep(3000);
 
@@ -61,14 +64,15 @@ public class RubricatorTest extends SetDriver {
         $(rubricator.newRubricOnWebsite).click();
 
         Assert.assertEquals(getWebDriver().getCurrentUrl(), getUrl.driverGetStr() + "rubric/testing");
-        Assert.assertEquals(rubricator.metaNameSeoTitleRubric(),"TestTitleSeo");
-        Assert.assertEquals(rubricator.metaNameSeoDescriptionRubric(),"TestDescriptionSeo");
+        Assert.assertEquals(rubricator.metaNameSeoTitleRubric(), "TestTitleSeo");
+        Assert.assertEquals(rubricator.metaNameSeoDescriptionRubric(), "TestDescriptionSeo");
 
         //check close popup
         getUrl.driverGetAdminUrl();
         $(rubricator.rubricatorTab).click();
+        sleep(1000);
         rubricator.checkCloseEditRubricPopup();
-        sleep(3000);
+        sleep(2000);
 
         //check delete rubric
         rubricator.deleteRubric();

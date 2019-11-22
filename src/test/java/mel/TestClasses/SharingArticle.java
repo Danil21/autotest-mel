@@ -20,7 +20,7 @@ public class SharingArticle extends SetDriver{
     private By vkSharingButton = By.cssSelector(".sharing-panel__buttons_publication > a:nth-child(2");
     private By twitterSharingButton = By.cssSelector(".sharing-panel__buttons_publication > a:nth-child(3)");
     private By okSharingButton = By.cssSelector(".sharing-panel__buttons_publication > a:nth-child(4)");
-    private By flipSharingButton = By.cssSelector(".sharing-panel__buttons_publication > a:nth-child(5)");
+    private By pinterestSharingButton = By.cssSelector(".sharing-panel__buttons_publication > a:nth-child(5)");//a[contains(@class,'publication_pinterest')]
     //Fb
     public By fbEmailInput = By.cssSelector("#email");
     public By fbPasswordInput = By.xpath("//*[@type='password']");
@@ -36,6 +36,7 @@ public class SharingArticle extends SetDriver{
     public By okEmailInput = By.name("fr.email");
     public By okPasswordInput = By.name("fr.password");
     public By okLoginButton = By.cssSelector(".form-actions > input");
+
     //flip
     private By flipLogIn = By.xpath("//span[contains(text(),'Войти')]");
     private By clickFbLogin = By.xpath("//*[contains(text(),'Continue with Facebook')]");
@@ -45,7 +46,7 @@ public class SharingArticle extends SetDriver{
     private By textVk = By.cssSelector("#share_title");
     private By textOk = By.cssSelector(".media-link_h");
     private By relapList = By.xpath("//div[contains(@class,'b-pb-article__body')]");
-    private By textFlip = By.cssSelector(".article__title");
+
 
     private void sharing(String mail, String password, String article,
                         By sharingButton, By emailInput, By passwordInput, By loginButton, By textSelector){
@@ -103,13 +104,12 @@ public class SharingArticle extends SetDriver{
 
     public void sharingPinterest() {
         WebDriver driver = WebDriverRunner.driver().getWebDriver();
-        methods = new AdditionalMethods();
         driver.navigate().refresh();
         String parentWindowId = driver.getWindowHandle();
         final Set<String> oldWindowsSet = driver.getWindowHandles();
 
 
-//        $(flipSharingButton).click();
+//        $(flipSharingButton).click(); //*[@data-test-id='seeItNow']
 //        methods.moveFocusToTheNewWindow(oldWindowsSet);
 //        $(flipLogIn).click();
 //        $(clickFbLogin).click();

@@ -68,7 +68,8 @@ public class AddingPublicationTest extends SetDriver {
         // запись в строку времени при нажатии на кнопку сохранения
         String firstTime = methods.getTextFromSelector(autosave.publicationSaveTime);
         // заполнения полей при создании публикации
-        addingPublication.fillingFields(methods.generateTitleRandom(), "Subtitle", "The Question", "Annoucement", "Covertag", "Addingtag", " Text in block");//TODO: режет первый символ, непонятно почему
+        addingPublication.fillingFields(methods.generateTitleRandom(), "Subtitle", "The Question",
+                "Annoucement", "Covertag", "Addingtag", " Text in block");//может резать первый символ, непонятно почему
         sleep(1000);
         Assert.assertEquals(title(), "Новая публикация");
 
@@ -76,7 +77,7 @@ public class AddingPublicationTest extends SetDriver {
         String draftUrl = WebDriverRunner.currentFrameUrl();
         // заполнение обложек
         addingPublication.addingCovers();
-        sleep(5000);
+        sleep(8000);
         // переход по url для создаваемого черновика
         getWebDriver().get(draftUrl);
         sleep(2000);
@@ -178,7 +179,7 @@ public class AddingPublicationTest extends SetDriver {
             }
         }
         sleep(3000);
-        //TODO: раскоментить когда починят баг с падающей страницей из за "/"
+        // раскоментить когда починят баг с падающей страницей из за "/"
 //        getWebDriver().get(publicationUrl);
 //        Assert.assertEquals(title(), "Страница не найдена | Мел");
 

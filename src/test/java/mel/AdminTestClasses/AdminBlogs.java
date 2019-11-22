@@ -15,8 +15,8 @@ public class AdminBlogs extends SetDriver{
 
     private By blogId = By.cssSelector("body > div.i-layout__content > div.i-layout__post-list > div:nth-child(2)");
     private By blogsButton = By.xpath("//a[contains(text(), 'Блоги')]");
-    private By openAtSiteButton = By.cssSelector(".b-post__button-open-at-site-container");
-    public By  blogTitleInSite = By.xpath("//*[@itemprop='headline']");
+    private By openAtSiteButton = By.cssSelector(".b-post__button-open-at-site-container > div");
+    public By  blogTitleInSite = By.cssSelector(".b-pb-article__header_post > h1");
     private By dropdownMenu = By.cssSelector(".g-dropdown__opener");
 
     private By postFutureButton = By.cssSelector(".g-dropdown__content > div > div:nth-child(1)");

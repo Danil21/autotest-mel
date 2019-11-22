@@ -14,19 +14,19 @@ import static com.codeborne.selenide.Selenide.title;
 
 public class LoginTest extends SetDriver {
 
+    private AdditionalMethods methods = new AdditionalMethods();
+    private GetUrl getUrl = new GetUrl();
+    private AdminLogout logout = new AdminLogout();
+    private AdminLogin adminLogin = new AdminLogin();
+
     @Test
     public void authorisationAndLogout() {
-        AdditionalMethods methods = new AdditionalMethods();
-        GetUrl getUrl = new GetUrl();
-        AdminLogout logout = new AdminLogout();
-        AdminLogin adminLogin = new AdminLogin();
-
         getUrl.driverGetAdminUrl();
         adminLogin.adminAuthorisation("str@str.com", "123qwe11");
         sleep(1000);
         Assert.assertEquals(methods.getTextFromSelector(adminLogin.incorrectEmailAndPasswordText), "Неверный email или пароль");
         adminLogin.clearFields();
-        adminLogin.adminAuthorisation(config.getTestProperty("adminLogin"),config.getTestProperty("adminPass"));
+        adminLogin.adminAuthorisation(config.getTestProperty("adminLogin"), config.getTestProperty("adminPass"));
         logout.adminLogout();
         Assert.assertEquals(title(), "Публикации");
     }

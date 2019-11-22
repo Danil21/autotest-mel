@@ -77,9 +77,8 @@ public class AuthorBloggerSubscribe extends SetDriver {
     }
 
     public void unsubscribeAuthor() {
-        AdditionalMethods methods = new AdditionalMethods();
         $(mySubscribersAuthorName).click();
-        methods.Wait(800);
+        sleep(500);
         $(authorSubscribeButtonChecked).click();
 
     }
@@ -145,10 +144,10 @@ public class AuthorBloggerSubscribe extends SetDriver {
     public static class AdminTags extends SetDriver {
 
 
-        public By tagsTab = By.xpath("//a[contains(@class,'g-list__item') and text()='Теги']");
+        private By tagsTab = By.xpath("//a[contains(@class,'g-list__item') and text()='Теги']");
         private By addNewTag = By.cssSelector(".i-layout__content > div.i-layout__subheader > div");
         private By searchInput = By.xpath("//*[@class='g-input__input' and @placeholder='Поиск']");
-        public By searchResultTag = By.xpath("//*[@class='i-layout__search-results']/descendant::div[@class='b-table-row__name']");
+        public By  searchResultTag = By.xpath("//*[@class='i-layout__search-results']/descendant::div[@class='b-table-row__name']");
         private By searchClearButton = By.xpath("//*[contains(@class,'g-icon_img_search-cancel') and @data-params='{\"type\":\"search-cancel\"}']");
         private By titleTagInput = By.cssSelector(".b-tag-dialog__name-input > div > input");
         private By urlInput = By.cssSelector(".b-tag-dialog__address-input > div > input");
@@ -182,8 +181,8 @@ public class AuthorBloggerSubscribe extends SetDriver {
         private By editTagButton = By.cssSelector("#\\34 428 > .b-table-row__controls > div > div > .g-dropdown__content > div");
         private By closePopupEditTagButton = By.cssSelector(".g-modal__close-icon > div");
         //сео на сайте
-        private By seoTitleTagOnSite = By.xpath("//meta[name='title']");
-        private By seoDescriptionTagOnSite = By.cssSelector("//meta[name='description']");
+        private By seoTitleTagOnSite = By.xpath("//meta[@name='title']");
+        private By seoDescriptionTagOnSite = By.xpath("//meta[@name='description']");
         public By  descriptionTagOnSite = By.cssSelector(".i-layout__over-content-flow > div > div:nth-child(5)");
         //подписка на тег на сайте после регистрации
         private By subscribeOnTagButton = By.xpath("//div[@class='b-checkbox__label' and text()='Подписаться']");
@@ -248,6 +247,18 @@ public class AuthorBloggerSubscribe extends SetDriver {
             $(searchInput).sendKeys(Keys.ENTER);
 
         }
+
+        public String generateTagNameAndUrl(){
+            int a = 0;
+            int b = 10000;
+            int FirstRandomNumber = a + (int) (Math.random() * b);
+            int SecondRandomNumber = a + (int) (Math.random() * b);
+            int randomNumber = FirstRandomNumber + SecondRandomNumber;
+            final String tagName = Integer.toString(randomNumber);
+            String tagUrl = Integer.toString(randomNumber);
+            return tagName;
+        }
+
 
         public void clearTextInSearchInput() {
             $(searchClearButton).click();

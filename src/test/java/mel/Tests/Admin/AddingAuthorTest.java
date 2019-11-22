@@ -22,7 +22,7 @@ public class AddingAuthorTest extends SetDriver {
     private AdditionalMethods methods;
 
     @Test
-    public void addingAuthor() throws InterruptedException {
+    public void addingAuthor() {
         methods = new AdditionalMethods();
         getUrl = new GetUrl();
         adminLogin = new AdminLogin();
@@ -31,12 +31,11 @@ public class AddingAuthorTest extends SetDriver {
         // получение рандомной строки для двух фамилий
         int a = 0;
         int b = 10000;
-        int firstrandomNumber = a + (int) (Math.random() * b);
-        String firstSurname = "яяяяя" + firstrandomNumber;
-        int secondrandomNumber = a + (int) (Math.random() * b);
-        String secondSurname = "яяяяя" + secondrandomNumber;
-        // запись в строку рандомного email
-        String email = methods.generateStr();
+        int firstRandomNumber = a + (int) (Math.random() * b);
+        String firstSurname = "яяяяя" + firstRandomNumber;
+        int secondRandomNumber = a + (int) (Math.random() * b);
+        String secondSurname = "яяяяя" + secondRandomNumber;
+
         // два имени автора
         String firstNameOfTheAuthor = "firstName";
         String secondNameOfTheAuthor = "secondName";
@@ -49,7 +48,7 @@ public class AddingAuthorTest extends SetDriver {
         author.checkAddingAuthorWithIncorrectFields();
         Assert.assertTrue(author.isSaveButtonDisabled());
         // создание автора
-        author.addingNewAuthor(firstNameOfTheAuthor, firstSurname, email, aboutAuthor);
+        author.addingNewAuthor(firstNameOfTheAuthor, firstSurname, methods.generateStr(), aboutAuthor);
         // нажатие на кнопку сортировки по фамилии и имени в обратном порядке
         author.clickInSortArrowButton();
         // запись в строку имени и фамилии автора

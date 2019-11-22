@@ -34,7 +34,7 @@ public class AuthorBloggerSubscribeTest extends SetDriver {
         authorSubscribe.singIn();
         authorSubscribe.registrationAfterGuestSubscribe();
         registration.userRegistrationWithoutLoginButton("FirstName", "LastName", methods.generateStr(), "12345678");
-
+        sleep(2000);
         //methods.closeNotificationCookie();
         authorSubscribe.moveToFeedPage();
 

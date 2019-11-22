@@ -3,7 +3,7 @@ package mel.Helper;
 public class Settings {
 
     public final int setStandNumber(){
-        return 2;
+        return 1;
     }
 
     public static String testsSelection(String testSuite){

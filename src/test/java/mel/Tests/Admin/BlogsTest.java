@@ -1,6 +1,5 @@
 package mel.Tests.Admin;
 
-import MelAppium.resources.config;
 import mel.AdminTestClasses.AdminBlogs;
 import mel.AdminTestClasses.AdminFrontPage;
 import mel.AdminTestClasses.AdminLogin;
@@ -24,7 +23,11 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class BlogsTest extends SetDriver {
 
-    private AdditionalMethods methods;
+    private AdditionalMethods methods = new AdditionalMethods();
+    private GetUrl getUrl = new GetUrl();
+    private AdminLogin adminLogin = new AdminLogin();
+    private AdminFrontPage frontPage = new AdminFrontPage();
+    private AdminBlogs blogs = new AdminBlogs();
 
 
     @AfterClass
@@ -42,33 +45,31 @@ public class BlogsTest extends SetDriver {
 
     @Test
     public void checkBlogs() {
-        methods = new AdditionalMethods();
-        GetUrl getUrl = new GetUrl();
-        AdminLogin adminLogin = new AdminLogin();
-        AdminFrontPage frontPage = new AdminFrontPage();
-        AdminBlogs blogs = new AdminBlogs();
 
         getUrl.driverGetAdminUrl();
-        adminLogin.adminAuthorisation(config.getTestProperty("adminLogin"),config.getTestProperty("adminPass"));
+        adminLogin.adminAuthorisation("test@example.com", "123qwe11");
+        sleep(2000);
         blogs.clickInBlogsButton();
 
         String parentWindowId = getWebDriver().getWindowHandle();
         final Set<String> oldWindowsSet = getWebDriver().getWindowHandles();
         // запись в строку заголовка блога в админке
-        String blogInAdmin = methods.getTextFromSelector(blogs.blogTitleInAdmin);
+        sleep(200);
+        String blogInAdmin = methods.getTextInsideElement(blogs.blogTitleInAdmin);
         String blogId = blogs.getBlogId();
-
+        sleep(3000);
         // нажатие на кнопку открытия на сайте публикации
         blogs.clickInOpenAtSiteButton();
+        sleep(3000);
         methods.moveFocusToTheNewWindow(oldWindowsSet);
 
         // запись в строку заголовка блога на сайте
         String blogInSite = methods.getTextInsideElement(blogs.blogTitleInSite);
-        // сравнение заголовков
-        blogInSite = blogInSite.replace("—", "–")
-                .replace("«", "")
-                .replace("»", "");                 //executes only if post has "-" or "«,", »" in title
-        blogInAdmin = blogInAdmin.replace("\"", "");
+
+//        blogInSite = blogInSite.replace("—", "–")
+//                .replace("«", "")
+//                .replace("»", "");                 //executes only if post has "-" or "«,", »" in title
+//        blogInAdmin = blogInAdmin.replace("\"", "");
 
         blogs.comprasionTitleBlogs(blogInAdmin, blogInSite);
 
@@ -152,7 +153,7 @@ public class BlogsTest extends SetDriver {
         // проверка на соответствия данных созданного блога и блога, отображающегося на сайте
         sleep(5000);
         getUrl.driverGet();
-
+        sleep(1000);
         if (methods.getDisplayedElement(blogs.mainPagePublicationTitle)) {
             Assert.assertEquals(methods.getTextFromSelector(blogs.mainPagePublicationTitle)
                     .replace("«", "")

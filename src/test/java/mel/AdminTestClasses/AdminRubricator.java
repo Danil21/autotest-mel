@@ -1,6 +1,5 @@
 package mel.AdminTestClasses;
 
-import mel.Helper.AdditionalMethods;
 import mel.Helper.SetDriver;
 import org.openqa.selenium.By;
 
@@ -8,8 +7,6 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class AdminRubricator extends SetDriver {
-
-    private AdditionalMethods methods;
 
     public By rubricatorTab = By.xpath("//*[@class='g-list__item ' and text()='Рубрикатор']");
     //add rubric
@@ -23,8 +20,8 @@ public class AdminRubricator extends SetDriver {
     private By metaNameSeoTitle = By.xpath("//meta[@name='title']");
     private By metaNameDescriptionTitle = By.xpath("//meta[@name='description']");
     //check edit rubric and close popup
-    public By  editNewRubricButton = By.xpath("//div[@class='b-tree-list__name' and text()='Testing']"); //поменять при смене имени рубрики
-    public By  editRubricButton = By.xpath("//div[@class='b-tree-list__name' and text()='Testing2']"); //поменять при смене имени рубрики
+    public By editNewRubricButton = By.xpath("//div[@class='b-tree-list__name' and text()='Testing']"); //поменять при смене имени рубрики
+    public By editRubricButton = By.xpath("//div[@class='b-tree-list__name' and text()='Testing2']"); //поменять при смене имени рубрики
     private By closeButtonInAddRubricPopup = By.cssSelector(".g-modal__close-icon > div");
     //check
     private By newPublicationButton = By.cssSelector(".i-layout__new-publication-button");

@@ -41,7 +41,7 @@ public class SharingArticleTest extends SetDriver {
         // Sharing twitter
         sharingArticle.twitterSharing(expectedResult);
         // Sharing pinterest
-     //   sharingArticle.sharingFlip();
+        //sharingArticle.sharingPinterest();
 
     }
 }

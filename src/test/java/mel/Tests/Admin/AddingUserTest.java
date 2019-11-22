@@ -20,18 +20,19 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class AddingUserTest extends SetDriver{
 
+    private AdditionalMethods methods = new AdditionalMethods();
+    private GetUrl getUrl = new GetUrl();
+    private AdminLogin adminLogin = new AdminLogin();
+    private  MailAuthorisation mailAuthorisation = new MailAuthorisation();
+    private AdminLogout logout = new AdminLogout();
+    private AdminAddingUser addingUser = new AdminAddingUser();
+
     @Test
     public void addingAdminUser() {
-        AdditionalMethods methods = new AdditionalMethods();
-        GetUrl getUrl = new GetUrl();
-        AdminLogin adminLogin = new AdminLogin();
-        MailAuthorisation mailAuthorisation = new MailAuthorisation();
-        AdminLogout logout = new AdminLogout();
-        AdminAddingUser addingUser = new AdminAddingUser();
 
+        getUrl.driverGetAdminUrl();
         // получение рандомной почты для регистрируемого пользователя
         String UserEmail = methods.generateStr();
-        getUrl.driverGetAdminUrl();
         adminLogin.adminAuthorisation(config.getTestProperty("adminLogin"),config.getTestProperty("adminPass"));
         sleep(2000);
         // заполнение полей регистрируемого пользователя

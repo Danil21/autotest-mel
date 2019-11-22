@@ -4,8 +4,6 @@ import MelAppium.resources.config;
 import mel.AdminTestClasses.AdminAddingPublication;
 import mel.AdminTestClasses.AdminAddingTestContent;
 import mel.AdminTestClasses.AdminLogin;
-import mel.AdminTestClasses.AdminPublicationDraft;
-import mel.Helper.AdditionalMethods;
 import mel.Helper.GetUrl;
 import mel.Helper.SetDriver;
 import org.testng.annotations.Test;
@@ -14,12 +12,13 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class AddingContentBlocksTest extends SetDriver {
 
+    private AdminAddingTestContent addingTest = new AdminAddingTestContent();
+    private GetUrl getUrl = new GetUrl();
+    private AdminLogin adminLogin = new AdminLogin();
+    private AdminAddingPublication addingPublication = new AdminAddingPublication();
+
     @Test
     public void addingContentBlocks() {
-        AdminAddingTestContent addingTest = new AdminAddingTestContent();
-        GetUrl getUrl = new GetUrl();
-        AdminLogin adminLogin = new AdminLogin();
-        AdminAddingPublication addingPublication = new AdminAddingPublication();
 
         int a = 0;
         int b = 10000;

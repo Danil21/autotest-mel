@@ -6,7 +6,11 @@ import mel.Helper.SetDriver;
 import mel.TestClasses.Logout;
 import mel.TestClasses.SocialNetworksAuthorisation;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class AuthorisationSocialTest extends SetDriver {
 
@@ -15,13 +19,13 @@ public class AuthorisationSocialTest extends SetDriver {
     private GetUrl getUrl;
     private Logout logout;
 
-//    @AfterClass
-//    public void browserLogs() throws IOException {
-//        methods = new AdditionalMethods();
-//
-//        ArrayList errors = new ArrayList();
-//        methods.getBrowserLogs(errors, "AuthorisationSocialTest");
-//    }
+    @AfterClass
+    public void browserLogs() throws IOException {
+        methods = new AdditionalMethods();
+
+        ArrayList errors = new ArrayList();
+        methods.getBrowserLogs(errors, "AuthorisationSocialTest");
+    }
 
     @Test
     public void facebookAuthorisation() {
@@ -48,7 +52,7 @@ public class AuthorisationSocialTest extends SetDriver {
 
         getUrl.driverGet();
         methods.deleteCookie();
-        authorisationSocial.vkAuthorisation("89774128696", "knock705b");//TODO : написать условие которое проверяет забанен пользователь или нет
+        authorisationSocial.vkAuthorisation("89774128696", "knock705b");//можно написать условие которое проверяет забанен пользователь или нет
         Assert.assertEquals(methods.getTextInsideElement(authorisationSocial.homePageName), "Aleksandr Makedonskiy");
         Assert.assertEquals(authorisationSocial.checkAvatar(), "img");
         methods.outputFromAnAccountSocialLogin();

@@ -81,6 +81,8 @@ public class AdditionalMethods extends SetDriver {
         return FirstRandomNumber + str1 + SecondRandomNumber + str2;
     }
 
+
+
     public void imageDownload(String str) {
         StringSelection stringSelection = new StringSelection(str);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
@@ -192,11 +194,11 @@ public class AdditionalMethods extends SetDriver {
     public void closeNotificationCookie() {
         boolean closure = $(closeNotificationCookie).isDisplayed();
         boolean hidentNottif = $(closeNotificationCookie).isDisplayed() && $(closeNotificationCookieReact).isDisplayed();
-        if (!closure) {
-            $(closeNotificationCookieReact).click();
+        if (!hidentNottif) {
+            scroll("300");
         }
-         else if (hidentNottif) {
-            scroll("500");
+         else if (!closure) {
+            $(closeNotificationCookieReact).click();
         }
          else {
             $(closeNotificationCookie).click();

@@ -5,6 +5,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,36 +19,37 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static io.github.bonigarcia.wdm.DriverManagerType.CHROME;
 import static org.openqa.selenium.remote.CapabilityType.BROWSER_NAME;
 
 
 public abstract class SetDriver extends AdditionalMethodsMobile {
 
-    WebDriver driver;
+    private static WebDriver driver;
     public static WebDriverWait wait;
 
-    @Parameters("browserName")
-    @BeforeTest
-    WebDriver getDriver(String browserName) {
-        if (browserName.equals("firefox")) {
-            Configuration.browser = "firefox";
-        } else if (browserName.equals("chrome")) {
-            Configuration.browser = "chrome";
-        }
-
-        return driver;
-    }
+//    @Parameters("browserName")
+//    @BeforeTest
+//    WebDriver getDriver(String browserName) {
+//        if (browserName.equals("firefox")) {
+//            Configuration.browser = "firefox";
+//        } else if (browserName.equals("chrome")) {
+//            Configuration.browser = "chrome";
+//        }
+//
+//        return driver;
+//    }
 
     @BeforeClass
     public static void setUpBeforeClass() throws MalformedURLException {
-        WebDriver driver;
+        //WebDriver driver;
 
         int testRunArea = 1;
 
         switch (testRunArea) {
             case 1:
-                // Configuration.browser = "chrome";
-                //  WebDriverManager.getInstance(CHROME).setup();
+                 Configuration.browser = "chrome";
+                  WebDriverManager.getInstance(CHROME).setup();
                 // System.setProperty("webdriver.chrome.driver", ".//chromedriver.exe");
                 Configuration.timeout = 10000;
                 Configuration.browserSize = "1280x1024";

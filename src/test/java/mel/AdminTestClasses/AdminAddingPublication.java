@@ -50,7 +50,7 @@ public class AdminAddingPublication extends SetDriver {
     public By publicationPreviewText = By.xpath("//p");
 
     private By publicationButton = By.cssSelector(".b-control-panel-draft__publish-button > div");
-    private By publicationConfirmButton = By.cssSelector("div:nth-child(21) > div.g-modal__content > div.b-confirm-modal__confirm-actions > div.b-confirm-modal__confirm-button > div");
+    private By publicationConfirmButton = By.cssSelector("div.b-confirm-modal__confirm-actions > div.b-confirm-modal__confirm-button ");
 
     private By publicationSettings = By.xpath("//div[text()='Настройки']");
     private By publicationUrl = By.cssSelector(".b-publication-settings__address-site-input > div > span");
@@ -151,8 +151,8 @@ public class AdminAddingPublication extends SetDriver {
 
     public void clickInPublicButton() {
         $(publicationButton).click();
+        sleep(20000);
         $(publicationConfirmButton).click();
-        sleep(1000);
         $(okButton).click();
     }
 

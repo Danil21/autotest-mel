@@ -170,8 +170,6 @@ public class AdminAddingTestContent extends SetDriver {
 
         final Set<String> oldWindowsSet = getWebDriver().getWindowHandles();
         methods.scroll("1300");
-        methods.closeNotificationCookie();
-        $(openInAdminButton).click();
         methods.moveFocusToTheNewWindow(oldWindowsSet);
         methods.scroll("700");
         $(deleteTestBlockButton).shouldBe(Condition.visible).click();

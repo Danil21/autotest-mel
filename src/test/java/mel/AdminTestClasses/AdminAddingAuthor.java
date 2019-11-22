@@ -29,7 +29,7 @@ public class AdminAddingAuthor extends SetDriver {
     private By openInNewPageButton = By.cssSelector(".b-table-row__controls");
     private By dropdownButton = By.cssSelector(".g-dropdown__opener");
     private By editButtonInDropdown = By.cssSelector(".g-dropdown__content > div > div:nth-child(1)");
-    private By deleteButtonInDropdown = By.cssSelector("#\\33 84 > div.b-table-row__controls > div > div > div.g-dropdown__content > div > div:nth-child(2)");
+    private By deleteButtonInDropdown = By.xpath("//*[@class='g-dropdown__content']/div/div[2]");
     private By confirmDeleteAuthorButton = By.cssSelector(".i-layout__remove-button");
     public By authorNameAndSurname = By.cssSelector(".b-table-row__name");
     public By authorNameAndSurnameInSite = By.cssSelector(".b-pb-author__name");
@@ -58,11 +58,11 @@ public class AdminAddingAuthor extends SetDriver {
         sleep(1000);
     }
 
-    public void addingNewAuthor(String name, String surname, String email, String aboutAuthor) throws InterruptedException {
+    public void addingNewAuthor(String name, String surname, String email, String aboutAuthor) {
         $(downloadCoverButton).click();
-        sleep(200);
+        sleep(2000);
         methods.imageDownload("C:\\1.jpg");
-        sleep(200);
+        sleep(2000);
         $(nameField).sendKeys(name);
         $(surnameField).sendKeys(surname);
         $(emailField).sendKeys(email);
@@ -70,9 +70,9 @@ public class AdminAddingAuthor extends SetDriver {
 
         if (getDisplayedCover() == false) {
             $(downloadPhotoButton).click();
-            sleep(200);
+            sleep(2000);
             methods.imageDownload("C:\\1.jpg");
-            sleep(200);
+            sleep(2000);
         }
 
         $(saveAuthorButton).click();
